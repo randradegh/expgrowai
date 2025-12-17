@@ -4,8 +4,10 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["node"],
+    "lib": ["ES2020"]
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "vite-plugin-hashnode-proxy.ts"]
 }
 

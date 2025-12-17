@@ -1,7 +1,66 @@
+import { useState, useMemo } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useHashnodePosts } from '../hooks/useHashnodePosts'
+
+// Configuración: Reemplaza con tu username de Hashnode
+// Ejemplo: 'randradedev' si tu blog es hashnode.com/@randradedev
+// O 'roberto-andrade' si tu blog es roberto-andrade.hashnode.dev
+const HASHNODE_HOSTNAME = import.meta.env.VITE_HASHNODE_HOSTNAME || 'randradedev'
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString)
+  const now = new Date()
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000)
+  
+  if (diffInSeconds < 60) return 'Hace unos momentos'
+  if (diffInSeconds < 3600) return `Hace ${Math.floor(diffInSeconds / 60)} minutos`
+  if (diffInSeconds < 86400) return `Hace ${Math.floor(diffInSeconds / 3600)} horas`
+  if (diffInSeconds < 604800) return `Hace ${Math.floor(diffInSeconds / 86400)} días`
+  if (diffInSeconds < 2592000) return `Hace ${Math.floor(diffInSeconds / 604800)} semanas`
+  if (diffInSeconds < 31536000) return `Hace ${Math.floor(diffInSeconds / 2592000)} meses`
+  return `Hace ${Math.floor(diffInSeconds / 31536000)} años`
+}
+
+function getPostUrl(slug: string): string {
+  // Si el hostname contiene '@', es un formato de perfil, si no, es subdominio
+  // Por ahora, intentamos ambos formatos. Hashnode redirigirá automáticamente
+  // Formato preferido: hashnode.com/@username/slug
+  return `https://hashnode.com/@${HASHNODE_HOSTNAME}/${slug}`
+}
 
 export default function Blog() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedTag, setSelectedTag] = useState<string | null>(null)
+  const { posts, loading, error, hostname } = useHashnodePosts({ limit: 20 })
+
+  // Obtener todas las etiquetas únicas de los posts
+  const allTags = useMemo(() => {
+    const tagSet = new Set<string>()
+    posts.forEach(post => {
+      post.tags.forEach(tag => tagSet.add(tag.name))
+    })
+    return Array.from(tagSet).sort()
+  }, [posts])
+
+  // Filtrar posts según búsqueda y etiqueta
+  const filteredPosts = useMemo(() => {
+    return posts.filter(post => {
+      const matchesSearch = 
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.brief.toLowerCase().includes(searchQuery.toLowerCase())
+      
+      const matchesTag = selectedTag === null || 
+        post.tags.some(tag => tag.name === selectedTag)
+      
+      return matchesSearch && matchesTag
+    })
+  }, [posts, searchQuery, selectedTag])
+
+  // Post destacado (el primero o el más reciente)
+  const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : null
+  const regularPosts = filteredPosts.slice(1)
+
   return (
     <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden antialiased selection:bg-primary selection:text-black">
       <div className="relative flex min-h-screen flex-col">
@@ -31,6 +90,8 @@ export default function Blog() {
                         className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-full text-white focus:outline-0 focus:ring-0 border-none bg-surface-dark focus:border-none h-full placeholder:text-text-muted/70 px-4 pl-2 text-base font-normal leading-normal"
                         placeholder="Buscar artículos, guías o temas..."
                         type="search"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                       />
                     </div>
                   </label>
@@ -38,21 +99,33 @@ export default function Blog() {
               </div>
               {/* Filter Chips */}
               <div className="flex gap-3 flex-wrap pt-4">
-                <button className="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white px-5 transition-transform hover:scale-105">
-                  <p className="text-sm font-bold leading-normal">Todos</p>
+                <button
+                  onClick={() => setSelectedTag(null)}
+                  className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full px-5 transition-transform hover:scale-105 ${
+                    selectedTag === null
+                      ? 'bg-primary text-white'
+                      : 'bg-surface-dark border border-border-dark hover:border-primary text-white hover:text-primary'
+                  }`}
+                >
+                  <p className={`text-sm ${selectedTag === null ? 'font-bold' : 'font-medium'} leading-normal`}>
+                    Todos
+                  </p>
                 </button>
-                <button className="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark border border-border-dark hover:border-primary text-white px-5 transition-all hover:text-primary">
-                  <p className="text-sm font-medium leading-normal">Casos de Estudio</p>
-                </button>
-                <button className="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark border border-border-dark hover:border-primary text-white px-5 transition-all hover:text-primary">
-                  <p className="text-sm font-medium leading-normal">Prompt Engineering</p>
-                </button>
-                <button className="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark border border-border-dark hover:border-primary text-white px-5 transition-all hover:text-primary">
-                  <p className="text-sm font-medium leading-normal">Automatización</p>
-                </button>
-                <button className="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark border border-border-dark hover:border-primary text-white px-5 transition-all hover:text-primary">
-                  <p className="text-sm font-medium leading-normal">Educación Futura</p>
-                </button>
+                {allTags.slice(0, 4).map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
+                    className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full px-5 transition-all ${
+                      selectedTag === tag
+                        ? 'bg-primary text-white'
+                        : 'bg-surface-dark border border-border-dark hover:border-primary text-white hover:text-primary'
+                    }`}
+                  >
+                    <p className={`text-sm ${selectedTag === tag ? 'font-bold' : 'font-medium'} leading-normal`}>
+                      {tag}
+                    </p>
+                  </button>
+                ))}
               </div>
             </div>
             
@@ -60,189 +133,158 @@ export default function Blog() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               {/* Left Column: Content */}
               <div className="lg:col-span-8 flex flex-col gap-8">
-                {/* Featured Article (Large Card) */}
-                <div className="group relative overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300">
-                  <div className="absolute top-0 right-0 p-4 z-10">
-                    <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                      Destacado
-                    </span>
+                {loading && (
+                  <div className="flex items-center justify-center py-20">
+                    <div className="text-text-muted">Cargando artículos...</div>
                   </div>
-                  <div className="flex flex-col md:flex-row h-full">
-                    <div className="w-full md:w-2/5 h-64 md:h-auto relative overflow-hidden">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        style={{
-                          backgroundImage:
-                            "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFaJ7k8jUdKRntJjDVYEOxUcmQdbT8dBHksJaMa4g3RdWo12QPuqbkL3RWiJFkeACnuyiRgfcdRw77xfdENeo-IJ8YaDmTR1oWv4o1O9qrKOVgWAAAajXfUxKj7n0zqeCtodeq8uSn2GIL28CDM2E__yD9YiJnF6-CX29cmCeU5Bj2tBbFlFxjT5Y05hXpicVwWcYDF5iO0AB41orICR1qZIzEb1RNQtW0GGbIG2Dek_7NU9qFJPwdNp8-Mm9p_c5AUGYB1w_cKcjv')",
-                        }}
-                      ></div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-surface-dark md:bg-gradient-to-r md:from-transparent md:to-surface-dark/20"></div>
+                )}
+
+                {error && (
+                  <div className="bg-red-500/10 border border-red-500/50 rounded-xl p-6">
+                    <p className="text-red-400 font-bold mb-2">Error al cargar los artículos:</p>
+                    <p className="text-red-300 mb-4">{error}</p>
+                    <div className="bg-surface-dark rounded-lg p-4 mt-4">
+                      <p className="text-text-muted text-sm mb-2">Información de depuración:</p>
+                      <ul className="text-text-muted text-xs space-y-1">
+                        <li>• Hostname configurado: <span className="text-white font-mono">{hostname}</span></li>
+                        <li>• Verifica que el archivo <span className="text-white font-mono">.env</span> contenga: <span className="text-white font-mono">VITE_HASHNODE_HOSTNAME=tu-hostname</span></li>
+                        <li>• El hostname debe ser solo el nombre (ej: "roberto-andrade"), sin "https://" ni ".hashnode.dev"</li>
+                        <li>• Asegúrate de tener posts publicados en tu blog de Hashnode</li>
+                        <li>• Revisa la consola del navegador (F12) para más detalles</li>
+                      </ul>
                     </div>
-                    <div className="w-full md:w-3/5 p-6 md:p-8 flex flex-col justify-center gap-4">
-                      <div className="flex items-center gap-2 text-text-muted text-sm font-medium">
-                        <span className="material-symbols-outlined text-[18px]">school</span>
-                        <span>Educación Futura</span>
-                        <span className="w-1 h-1 rounded-full bg-text-muted"></span>
-                        <span>5 min lectura</span>
-                      </div>
-                      <h3 className="text-white text-2xl md:text-3xl font-bold leading-tight group-hover:text-primary transition-colors">
-                        El Futuro de la Educación con IA Generativa
-                      </h3>
-                      <p className="text-text-muted text-base font-normal leading-relaxed line-clamp-3">
-                        Descubre cómo las instituciones están transformando el aprendizaje con herramientas personalizadas y tutores virtuales que se adaptan a cada estudiante.
-                      </p>
-                      <div className="pt-2">
-                        <button className="flex items-center gap-2 text-white font-bold text-sm hover:text-primary transition-colors group/btn">
-                          Leer artículo completo
-                          <span className="material-symbols-outlined text-[18px] transition-transform group-hover/btn:translate-x-1">
-                            arrow_forward
+                  </div>
+                )}
+
+                {!loading && !error && filteredPosts.length === 0 && (
+                  <div className="bg-surface-dark border border-border-dark rounded-xl p-12 text-center">
+                    <p className="text-text-muted text-lg">
+                      No se encontraron artículos que coincidan con tu búsqueda.
+                    </p>
+                  </div>
+                )}
+
+                {!loading && !error && featuredPost && (
+                  <>
+                    {/* Featured Article (Large Card) */}
+                    <a
+                      href={getPostUrl(featuredPost.slug)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative overflow-hidden rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 transition-all duration-300 block"
+                    >
+                      {featuredPost.dateFeatured && (
+                        <div className="absolute top-0 right-0 p-4 z-10">
+                          <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            Destacado
                           </span>
-                        </button>
+                        </div>
+                      )}
+                      <div className="flex flex-col md:flex-row h-full">
+                        {featuredPost.coverImage && (
+                          <div className="w-full md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                            <div
+                              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                              style={{ backgroundImage: `url('${featuredPost.coverImage}')` }}
+                            ></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-surface-dark md:bg-gradient-to-r md:from-transparent md:to-surface-dark/20"></div>
+                          </div>
+                        )}
+                        <div className={`w-full ${featuredPost.coverImage ? 'md:w-3/5' : 'md:w-full'} p-6 md:p-8 flex flex-col justify-center gap-4`}>
+                          <div className="flex items-center gap-2 text-text-muted text-sm font-medium">
+                            {featuredPost.tags.length > 0 && (
+                              <>
+                                <span className="material-symbols-outlined text-[18px]">category</span>
+                                <span>{featuredPost.tags[0].name}</span>
+                                <span className="w-1 h-1 rounded-full bg-text-muted"></span>
+                              </>
+                            )}
+                            <span>{featuredPost.readingTime} min lectura</span>
+                          </div>
+                          <h3 className="text-white text-2xl md:text-3xl font-bold leading-tight group-hover:text-primary transition-colors">
+                            {featuredPost.title}
+                          </h3>
+                          <p className="text-text-muted text-base font-normal leading-relaxed line-clamp-3">
+                            {featuredPost.brief}
+                          </p>
+                          <div className="pt-2">
+                            <span className="flex items-center gap-2 text-white font-bold text-sm group-hover:text-primary transition-colors">
+                              Leer artículo completo
+                              <span className="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">
+                                arrow_forward
+                              </span>
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
+                    
+                    {/* Article Grid (2 Columns) */}
+                    {regularPosts.length > 0 && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {regularPosts.map((post) => (
+                          <a
+                            key={post._id}
+                            href={getPostUrl(post.slug)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-col rounded-xl bg-surface-dark border border-border-dark overflow-hidden group hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10"
+                          >
+                            {post.coverImage && (
+                              <div className="h-48 overflow-hidden relative">
+                                <div
+                                  className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                  style={{ backgroundImage: `url('${post.coverImage}')` }}
+                                ></div>
+                              </div>
+                            )}
+                            <div className="flex flex-col flex-1 p-5 gap-3">
+                              <div className="flex justify-between items-center">
+                                {post.tags.length > 0 && (
+                                  <span className="text-primary text-xs font-bold uppercase tracking-wider">
+                                    {post.tags[0].name}
+                                  </span>
+                                )}
+                                <span className="text-text-muted text-xs">
+                                  {formatDate(post.dateAdded)}
+                                </span>
+                              </div>
+                              <h4 className="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors">
+                                {post.title}
+                              </h4>
+                              <p className="text-text-muted text-sm leading-relaxed line-clamp-3 mb-2">
+                                {post.brief}
+                              </p>
+                              <div className="mt-auto pt-2 border-t border-white/5 flex items-center justify-between">
+                                <span className="text-text-muted text-xs font-medium">
+                                  {post.readingTime} min lectura
+                                </span>
+                                <span className="material-symbols-outlined text-white group-hover:text-primary transition-colors">
+                                  arrow_outward
+                                </span>
+                              </div>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
+                
+                {/* Pagination / Load More - Puedes implementar paginación más adelante */}
+                {!loading && !error && filteredPosts.length > 0 && (
+                  <div className="flex justify-center pt-8">
+                    <a
+                      href={`https://hashnode.com/@${HASHNODE_HOSTNAME}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 rounded-full border border-border-dark text-white hover:bg-surface-dark hover:border-primary hover:text-primary transition-all font-medium"
+                    >
+                      <span className="material-symbols-outlined">open_in_new</span>
+                      Ver más en Hashnode
+                    </a>
                   </div>
-                </div>
-                
-                {/* Article Grid (2 Columns) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Card 1 */}
-                  <article className="flex flex-col rounded-xl bg-surface-dark border border-border-dark overflow-hidden group hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10">
-                    <div className="h-48 overflow-hidden relative">
-                      <div
-                        className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                        style={{
-                          backgroundImage:
-                            "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAG19WIhNCyozIhgzsSNb8ZZ4lOfQJ3gaOF42k4hXgAWP7IaB5bGeOtLdeUriTSPRf8Pdw_e2SCoW0eRoT4UNraBzw2LQCs8EikrGTGq6k0biDhmKcVcEPMcTPlrOs-lXo7Y1TEL8q-_mv2y4e193b3eT5WlWUOI4ty-XtzGbOzkKmdJ5VxtLabniExehVfmMDIE2fm6BGp7DAq8wFJrHPLIgjtV5vqEXWK6NxRtaC263Qt6tGYBfOPLtnJSv8xwMM5Aa5Vcp_aeAEw')",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="flex flex-col flex-1 p-5 gap-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-primary text-xs font-bold uppercase tracking-wider">
-                          Prompt Engineering
-                        </span>
-                        <span className="text-text-muted text-xs">Hace 2 días</span>
-                      </div>
-                      <h4 className="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors">
-                        Domina el Contexto: Guía Avanzada de Prompting
-                      </h4>
-                      <p className="text-text-muted text-sm leading-relaxed line-clamp-3 mb-2">
-                        Aprende a estructurar tus prompts para obtener respuestas precisas y evitar alucinaciones en modelos LLM.
-                      </p>
-                      <div className="mt-auto pt-2 border-t border-white/5 flex items-center justify-between">
-                        <span className="text-text-muted text-xs font-medium">8 min lectura</span>
-                        <span className="material-symbols-outlined text-white group-hover:text-primary transition-colors">
-                          arrow_outward
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                  
-                  {/* Card 2 */}
-                  <article className="flex flex-col rounded-xl bg-surface-dark border border-border-dark overflow-hidden group hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10">
-                    <div className="h-48 overflow-hidden relative">
-                      <div
-                        className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                        style={{
-                          backgroundImage:
-                            "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBghIFKLKoORNmiM9XHIrrcYDVCEA1pkidwkliBdBlfrpPynURpFUNVrZxZjKFTJDXAHU5yiCvBQXIHXTD9Wzjsny9BJEEoZmrPvpMVE3WgVJxtxl92YGhS1QeP4s-OMbyZNEcukIc1b75ar19bYymmTWknVv-oMzVIzZw5JxZL6w0-RaKcs2wIhGwZKcGEIPr8NB_2ofKJjEJDTbqONGwM-7_pnFWgBLXfo1N2Vf8VFUW9qOOwryBQrRei6U8SlgE1udENZmtq_5m')",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="flex flex-col flex-1 p-5 gap-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-primary text-xs font-bold uppercase tracking-wider">Marketing</span>
-                        <span className="text-text-muted text-xs">Hace 5 días</span>
-                      </div>
-                      <h4 className="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors">
-                        Automatizando el SEO con Agentes de IA
-                      </h4>
-                      <p className="text-text-muted text-sm leading-relaxed line-clamp-3 mb-2">
-                        Cómo configurar un flujo de trabajo que investiga keywords, redacta borradores y optimiza meta-tags automáticamente.
-                      </p>
-                      <div className="mt-auto pt-2 border-t border-white/5 flex items-center justify-between">
-                        <span className="text-text-muted text-xs font-medium">6 min lectura</span>
-                        <span className="material-symbols-outlined text-white group-hover:text-primary transition-colors">
-                          arrow_outward
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                  
-                  {/* Card 3 */}
-                  <article className="flex flex-col rounded-xl bg-surface-dark border border-border-dark overflow-hidden group hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10">
-                    <div className="h-48 overflow-hidden relative">
-                      <div
-                        className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                        style={{
-                          backgroundImage:
-                            "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcyttgE1qcs8upct8IXWcCandjfR11d8OafDwkmllRWg2ZmgG48iG-1OYgwy-xzACGPp93XKdTNEahGDBdBUTNHvA6l9YFsDYj3Bd4zVFwo2r2rGHjp7R2SiYHCs_Fp3mbKdfM5iX7ly3YJe7kgsiB_zQoV30P890lsHJ_0daaS5Gl3oNSiWVQHCzYWJgJE9Ym_6b9c0J_Z6nAJQ2oehvsYKJbUrGFGKsIjoPhBds8EkuyMCYaaI--I35R-Kp1bQ_PO3KIuURqqOca')",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="flex flex-col flex-1 p-5 gap-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-primary text-xs font-bold uppercase tracking-wider">
-                          Casos de Estudio
-                        </span>
-                        <span className="text-text-muted text-xs">Hace 1 semana</span>
-                      </div>
-                      <h4 className="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors">
-                        Caso TechEd: +40% de Retención Estudiantil
-                      </h4>
-                      <p className="text-text-muted text-sm leading-relaxed line-clamp-3 mb-2">
-                        Analizamos cómo una plataforma online integró tutores personalizados basados en GPT-4 para mejorar el engagement.
-                      </p>
-                      <div className="mt-auto pt-2 border-t border-white/5 flex items-center justify-between">
-                        <span className="text-text-muted text-xs font-medium">10 min lectura</span>
-                        <span className="material-symbols-outlined text-white group-hover:text-primary transition-colors">
-                          arrow_outward
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                  
-                  {/* Card 4 */}
-                  <article className="flex flex-col rounded-xl bg-surface-dark border border-border-dark overflow-hidden group hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10">
-                    <div className="h-48 overflow-hidden relative">
-                      <div
-                        className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                        style={{
-                          backgroundImage:
-                            "url('https://lh3.googleusercontent.com/aida-public/AB6AXuD27TXSQXHGd9mY1xm9vWqgPy7HdiY5LNjIM2BFYFka-e_PRMcRiZ9Vgv_y4ery4ZbEMU3J6kKzaWi6afPkcpMrfrFARN-9yrIANY0VB5B3MQuHHJHH-w1yekuVbzHrYO9XOdLqtIITW_-yMR4d3L6QoTVT-MTEaLaL93H0I3sYw7e4c79_xvAWUh1WjLWXX7oP__2xNqGVoQ9-kD4U4lvsLA2OJSSiSYedHseBpFL9elHRxPzDXdulU8nMCfA6MRqMb8HPnCL4Vrdc')",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="flex flex-col flex-1 p-5 gap-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-primary text-xs font-bold uppercase tracking-wider">
-                          Automatización
-                        </span>
-                        <span className="text-text-muted text-xs">Hace 2 semanas</span>
-                      </div>
-                      <h4 className="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors">
-                        Ética y Privacidad en la Implementación de IA
-                      </h4>
-                      <p className="text-text-muted text-sm leading-relaxed line-clamp-3 mb-2">
-                        Guía práctica para directivos: cómo asegurar que tus datos y los de tus clientes estén protegidos al usar APIs de terceros.
-                      </p>
-                      <div className="mt-auto pt-2 border-t border-white/5 flex items-center justify-between">
-                        <span className="text-text-muted text-xs font-medium">7 min lectura</span>
-                        <span className="material-symbols-outlined text-white group-hover:text-primary transition-colors">
-                          arrow_outward
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                
-                {/* Pagination / Load More */}
-                <div className="flex justify-center pt-8">
-                  <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-border-dark text-white hover:bg-surface-dark hover:border-primary hover:text-primary transition-all font-medium">
-                    <span className="material-symbols-outlined">refresh</span>
-                    Cargar más artículos
-                  </button>
-                </div>
+                )}
                 
                 {/* Newsletter Section (Inline) */}
                 <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-dark to-background-dark border border-border-dark p-8 md:p-12 mt-8">
@@ -301,22 +343,24 @@ export default function Blog() {
                         <p className="text-white font-bold text-sm">Roberto Andrade F.</p>
                         <p className="text-text-muted text-xs mb-2">Exponential Grow AI & Prompt Engineer</p>
                         <p className="text-text-muted text-sm leading-relaxed">
-                          Ayudo a empresas y universidades a integrar IA sin fricción. <a className="text-primary hover:underline" href="#">
-                            Leer más
-                          </a>.
+                          Ayudo a empresas y universidades a integrar IA sin fricción.
                         </p>
                       </div>
                     </div>
                     <div className="mt-4 flex gap-2">
                       <a
                         className="flex-1 flex items-center justify-center gap-2 h-9 rounded-lg bg-border-dark hover:bg-[#36562c] text-white text-sm font-medium transition-colors"
-                        href="#"
+                        href="https://linkedin.com/in/roberto-andrade-f-1338356"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <span className="material-symbols-outlined text-[16px]">link</span> LinkedIn
                       </a>
                       <a
                         className="flex-1 flex items-center justify-center gap-2 h-9 rounded-lg bg-border-dark hover:bg-[#36562c] text-white text-sm font-medium transition-colors"
-                        href="#"
+                        href="https://x.com/randrade"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <span className="material-symbols-outlined text-[16px]">alternate_email</span> Twitter
                       </a>
@@ -324,43 +368,42 @@ export default function Blog() {
                   </div>
                   
                   {/* Popular/Top Reads */}
-                  <div className="bg-surface-dark border border-border-dark rounded-xl p-6">
-                    <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-                      <span className="material-symbols-outlined text-primary">trending_up</span>
-                      Más Leídos
-                    </h4>
-                    <div className="flex flex-col gap-4">
-                      <a className="group flex gap-3 items-start" href="#">
-                        <span className="text-primary font-bold text-lg opacity-50 group-hover:opacity-100">01</span>
-                        <div>
-                          <h5 className="text-white text-sm font-medium leading-snug group-hover:text-primary transition-colors">
-                            Los 5 errores comunes al implementar ChatGPT en el aula
-                          </h5>
-                          <span className="text-xs text-text-muted block mt-1">3.2k vistas</span>
-                        </div>
-                      </a>
-                      <div className="h-px w-full bg-white/5"></div>
-                      <a className="group flex gap-3 items-start" href="#">
-                        <span className="text-primary font-bold text-lg opacity-50 group-hover:opacity-100">02</span>
-                        <div>
-                          <h5 className="text-white text-sm font-medium leading-snug group-hover:text-primary transition-colors">
-                            Midjourney v6 para creativos: Guía de parámetros
-                          </h5>
-                          <span className="text-xs text-text-muted block mt-1">2.8k vistas</span>
-                        </div>
-                      </a>
-                      <div className="h-px w-full bg-white/5"></div>
-                      <a className="group flex gap-3 items-start" href="#">
-                        <span className="text-primary font-bold text-lg opacity-50 group-hover:opacity-100">03</span>
-                        <div>
-                          <h5 className="text-white text-sm font-medium leading-snug group-hover:text-primary transition-colors">
-                            La pila tecnológica ideal para agencias de marketing en 2024
-                          </h5>
-                          <span className="text-xs text-text-muted block mt-1">2.1k vistas</span>
-                        </div>
-                      </a>
+                  {posts.length > 0 && (
+                    <div className="bg-surface-dark border border-border-dark rounded-xl p-6">
+                      <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-primary">trending_up</span>
+                        Más Leídos
+                      </h4>
+                      <div className="flex flex-col gap-4">
+                        {posts
+                          .sort((a, b) => (b.totalReactions || 0) - (a.totalReactions || 0))
+                          .slice(0, 3)
+                          .map((post, index) => (
+                            <div key={post._id}>
+                              <a
+                                href={getPostUrl(post.slug)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex gap-3 items-start"
+                              >
+                                <span className="text-primary font-bold text-lg opacity-50 group-hover:opacity-100">
+                                  {String(index + 1).padStart(2, '0')}
+                                </span>
+                                <div>
+                                  <h5 className="text-white text-sm font-medium leading-snug group-hover:text-primary transition-colors">
+                                    {post.title}
+                                  </h5>
+                                  <span className="text-xs text-text-muted block mt-1">
+                                    {post.totalReactions || 0} reacciones
+                                  </span>
+                                </div>
+                              </a>
+                              {index < 2 && <div className="h-px w-full bg-white/5 mt-4"></div>}
+                            </div>
+                          ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                   
                   {/* CTA Box */}
                   <div className="relative overflow-hidden rounded-xl bg-primary text-white p-6 shadow-lg shadow-primary/20">
@@ -387,4 +430,3 @@ export default function Blog() {
     </div>
   )
 }
-
