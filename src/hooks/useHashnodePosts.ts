@@ -5,10 +5,8 @@ import type { HashnodePost } from '../types/hashnode'
 // Ejemplo: 'randradedev' si tu blog es hashnode.com/@randradedev
 // O 'roberto-andrade' si tu blog es roberto-andrade.hashnode.dev
 const HASHNODE_HOSTNAME = import.meta.env.VITE_HASHNODE_HOSTNAME || 'randradedev'
-// Usar proxy local en desarrollo, en producción usar API directa (requiere backend o CORS configurado)
-const HASHNODE_API = import.meta.env.DEV 
-  ? '/api/hashnode' 
-  : 'https://gql.hashnode.com'
+// Usar proxy local en desarrollo, en producción usar función serverless de Vercel
+const HASHNODE_API = '/api/hashnode'
 
 interface UseHashnodePostsOptions {
   limit?: number

@@ -23,10 +23,8 @@ function formatDate(dateString: string): string {
 }
 
 function getPostUrl(slug: string): string {
-  // Si el hostname contiene '@', es un formato de perfil, si no, es subdominio
-  // Por ahora, intentamos ambos formatos. Hashnode redirigirá automáticamente
-  // Formato preferido: hashnode.com/@username/slug
-  return `https://hashnode.com/@${HASHNODE_HOSTNAME}/${slug}`
+  // Usar el subdominio personalizado de Hashnode
+  return `https://${HASHNODE_HOSTNAME}.hashnode.dev/${slug}`
 }
 
 export default function Blog() {
@@ -275,7 +273,7 @@ export default function Blog() {
                 {!loading && !error && filteredPosts.length > 0 && (
                   <div className="flex justify-center pt-8">
                     <a
-                      href={`https://hashnode.com/@${HASHNODE_HOSTNAME}`}
+                      href={`https://${HASHNODE_HOSTNAME}.hashnode.dev`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-6 py-3 rounded-full border border-border-dark text-white hover:bg-surface-dark hover:border-primary hover:text-primary transition-all font-medium"
