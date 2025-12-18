@@ -30,7 +30,10 @@ function getPostUrl(slug: string): string {
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
-  const { posts, loading, error, hostname } = useHashnodePosts({ limit: 20 })
+  const { posts, loading, error, hostname } = useHashnodePosts({ limit: 5 })
+  
+  // Obtener posts adicionales para la sección "Más Leídos" (obtenemos más para tener mejor ranking)
+  const { posts: allPostsForPopular } = useHashnodePosts({ limit: 20 })
 
   // Obtener todas las etiquetas únicas de los posts
   const allTags = useMemo(() => {
@@ -366,17 +369,34 @@ export default function Blog() {
                   </div>
                   
                   {/* Popular/Top Reads */}
-                  {posts.length > 0 && (
-                    <div className="bg-surface-dark border border-border-dark rounded-xl p-6">
-                      <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-                        <span className="material-symbols-outlined text-primary">trending_up</span>
-                        Más Leídos
-                      </h4>
-                      <div className="flex flex-col gap-4">
-                        {posts
-                          .sort((a, b) => (b.totalReactions || 0) - (a.totalReactions || 0))
-                          .slice(0, 3)
-                          .map((post, index) => (
+                  {(() => {
+                    // Filtrar posts de los últimos 90 días
+                    const ninetyDaysAgo = new Date()
+                    ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90)
+                    
+                    const recentPosts = allPostsForPopular.filter(post => {
+                      if (!post.dateAdded) return false
+                      const postDate = new Date(post.dateAdded)
+                      return postDate >= ninetyDaysAgo
+                    })
+                    
+                    // Ordenar solo por vistas
+                    const topPosts = recentPosts
+                      .sort((a, b) => {
+                        const viewsA = a.views || 0
+                        const viewsB = b.views || 0
+                        return viewsB - viewsA
+                      })
+                      .slice(0, 3)
+                    
+                    return topPosts.length > 0 ? (
+                      <div className="bg-surface-dark border border-border-dark rounded-xl p-6">
+                        <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                          <span className="material-symbols-outlined text-primary">trending_up</span>
+                          Más Leídos (últimos 90 días)
+                        </h4>
+                        <div className="flex flex-col gap-4">
+                          {topPosts.map((post, index) => (
                             <div key={post._id}>
                               <a
                                 href={getPostUrl(post.slug)}
@@ -392,16 +412,17 @@ export default function Blog() {
                                     {post.title}
                                   </h5>
                                   <span className="text-xs text-text-muted block mt-1">
-                                    {post.totalReactions || 0} reacciones
+                                    {post.views || 0} vistas
                                   </span>
                                 </div>
                               </a>
-                              {index < 2 && <div className="h-px w-full bg-white/5 mt-4"></div>}
+                              {index < topPosts.length - 1 && <div className="h-px w-full bg-white/5 mt-4"></div>}
                             </div>
                           ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    ) : null
+                  })()}
                   
                   {/* CTA Box */}
                   <div className="relative overflow-hidden rounded-xl bg-primary text-white p-6 shadow-lg shadow-primary/20">

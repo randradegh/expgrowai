@@ -10,6 +10,7 @@ export interface HashnodePost {
   replyCount: number
   responseCount: number
   readingTime: number
+  views?: number
   tags: Array<{
     name: string
     slug: string

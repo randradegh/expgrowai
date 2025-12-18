@@ -48,6 +48,7 @@ export function useHashnodePosts(options: UseHashnodePostsOptions = {}) {
                           reactionCount
                           responseCount
                           readTimeInMinutes
+                          views
                           tags {
                             name
                             slug
@@ -128,6 +129,7 @@ export function useHashnodePosts(options: UseHashnodePostsOptions = {}) {
             replyCount: 0,
             responseCount: post.responseCount || 0,
             readingTime: post.readTimeInMinutes || 0,
+            views: (post as any).views || 0,
             tags: post.tags || [],
             author: {
               username: post.author?.username || '',
