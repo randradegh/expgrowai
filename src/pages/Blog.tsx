@@ -336,8 +336,7 @@ export default function Blog() {
                       <div
                         className="w-16 h-16 rounded-full bg-cover bg-center shrink-0 border-2 border-primary/30"
                         style={{
-                          backgroundImage:
-                            "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCD4ABCNcbO2oLPDnPWgspGH1OdwL8DqhHxuntpIN_J3gMsuDBUt6wnauU_dlflutz5rHHspPO6XPSallo9Bcx7CVRwxGuFYC78Tf3-SptRQ_dkkCep0jMW6C974PHwNw50-BZKWaU8Mo6pl4zE23Cnc_8ogwGt8A0ZwfOpBF4U2sLPiLPHHwUR5ci7pXR7ITASkPg1Xhm3Z1FMUJI5SD_AN6XWpoqM8037Q5BWr-AkYbheJvhr2hJrNtbzUJgRmayAMzVFlBF33cn6')",
+                          backgroundImage: "url('/raf_nbp_2025_color.png')",
                         }}
                       ></div>
                       <div>

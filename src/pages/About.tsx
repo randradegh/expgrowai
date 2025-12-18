@@ -20,8 +20,7 @@ export default function About() {
                       <div
                         className="w-full h-full bg-center bg-cover bg-no-repeat grayscale hover:grayscale-0 transition-all duration-700"
                         style={{
-                          backgroundImage:
-                            "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDkf0Uylo2Y1AIgMov5hEroGZyInBeyWrytnUE0Yzyv1IGiE6HGFQkivyD45mZuFwnZH64qmD4Tn31m1frg2W2DkxiaxleQgm9Op3FgPQ1vBp7DzA-OvrnBo8VZ70dXis85FeA1Rp2dHSTg82dGxQVJ6i-OKf6c5R9LFOUOuwY8_vL71mXSKncd4cnnsqfeGlnECeneOo-ttB3FRvRTdIeJ-AwNIxzjlNMq4CaOX32v0jvoq5YHW_i5o1hW1sgEKVLftE72KuIKFpse')",
+                          backgroundImage: "url('/raf_nbp_2025.png')",
                         }}
                       ></div>
                     </div>
