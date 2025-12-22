@@ -263,6 +263,48 @@ export default function About() {
           </div>
         </section>
         
+        {/* Contact Information Section */}
+        <section className="py-16 border-t border-border-dark bg-surface-dark/30">
+          <div className="layout-container flex flex-col">
+            <div className="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+              <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <h2 className="text-white text-2xl md:text-3xl font-bold leading-tight tracking-tight px-4 mb-8 text-center">
+                  Información de <span className="text-primary">Contacto</span>
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+                  <div className="flex flex-col items-center md:items-start p-6 bg-background-dark rounded-xl border border-border-dark hover:border-primary transition-colors group">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                      <span className="material-symbols-outlined text-primary group-hover:text-white">person</span>
+                    </div>
+                    <h3 className="text-white font-bold mb-2 text-center md:text-left">Consultor</h3>
+                    <p className="text-gray-400 text-sm text-center md:text-left">Ing. Roberto Andrade Fonseca</p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center md:items-start p-6 bg-background-dark rounded-xl border border-border-dark hover:border-primary transition-colors group">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                      <span className="material-symbols-outlined text-primary group-hover:text-white">phone</span>
+                    </div>
+                    <h3 className="text-white font-bold mb-2 text-center md:text-left">Teléfono</h3>
+                    <a href="tel:+525525765962" className="text-primary text-sm hover:text-primary-light transition-colors text-center md:text-left">
+                      55 25765962
+                    </a>
+                  </div>
+                  
+                  <div className="flex flex-col items-center md:items-start p-6 bg-background-dark rounded-xl border border-border-dark hover:border-primary transition-colors group">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                      <span className="material-symbols-outlined text-primary group-hover:text-white">mail</span>
+                    </div>
+                    <h3 className="text-white font-bold mb-2 text-center md:text-left">Correo Electrónico</h3>
+                    <a href="mailto:randradedev@gmail.com" className="text-primary text-sm hover:text-primary-light transition-colors break-all text-center md:text-left">
+                      randradedev@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
         {/* CTA Footer */}
         <section className="py-16 border-t border-border-dark bg-[#0f190c]">
           <div className="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">

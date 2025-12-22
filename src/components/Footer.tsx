@@ -19,6 +19,31 @@ export default function Footer() {
           </button>
         </div>
       </div>
+      
+      {/* Contact Information */}
+      <div className="mt-16 mb-24 relative z-10">
+        <div className="max-w-[720px] mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 text-center md:text-left">
+            <div className="flex items-center gap-3 text-white">
+              <span className="material-symbols-outlined text-primary">person</span>
+              <span className="text-sm font-medium">Ing. Roberto Andrade Fonseca</span>
+            </div>
+            <div className="flex items-center gap-3 text-white">
+              <span className="material-symbols-outlined text-primary">phone</span>
+              <a href="tel:+525525765962" className="text-sm font-medium hover:text-primary transition-colors">
+                55 25765962
+              </a>
+            </div>
+            <div className="flex items-center gap-3 text-white">
+              <span className="material-symbols-outlined text-primary">mail</span>
+              <a href="mailto:randradedev@gmail.com" className="text-sm font-medium hover:text-primary transition-colors">
+                randradedev@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div className="absolute bottom-6 w-full text-center">
         <p className="text-gray-600 text-xs">
           © 2024 Exponential Grow AI - Roberto Andrade F. Todos los derechos reservados.
