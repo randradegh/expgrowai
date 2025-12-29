@@ -41,7 +41,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || 'Error al enviar el mensaje')
+        // Mostrar el mensaje específico del error si está disponible
+        const errorMsg = data.message || data.error || 'Error al enviar el mensaje'
+        throw new Error(errorMsg)
       }
 
       setSubmitStatus('success')

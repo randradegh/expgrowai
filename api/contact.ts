@@ -53,7 +53,30 @@ export default async function handler(req: any, res: any) {
 
     // Email desde el cual se envía (puede ser onboarding@resend.dev para pruebas)
     // O usar un dominio verificado: 'Contacto <noreply@tudominio.com>'
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+    let fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+    
+    // Validar que no sea un dominio de Gmail (no se puede verificar)
+    if (fromEmail.includes('@gmail.com') || fromEmail.includes('@googlemail.com')) {
+      console.warn('⚠️ No se puede usar Gmail como email from. Usando onboarding@resend.dev')
+      fromEmail = 'onboarding@resend.dev'
+    }
+
+    // Función helper para escapar HTML
+    const escapeHtml = (text: string): string => {
+      const map: { [key: string]: string } = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }
+      return text.replace(/[&<>"']/g, (m) => map[m])
+    }
+
+    // Escapar datos del usuario para prevenir XSS
+    const safeName = escapeHtml(name)
+    const safeEmail = escapeHtml(email)
+    const safeMessage = escapeHtml(message)
 
     try {
       // Enviar email usando Resend
@@ -61,20 +84,20 @@ export default async function handler(req: any, res: any) {
         from: fromEmail,
         to: [toEmail],
         replyTo: email, // Para que puedas responder directamente al usuario
-        subject: `Nuevo mensaje de contacto de ${name}`,
+        subject: `Nuevo mensaje de contacto de ${safeName}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 10px;">
               Nuevo mensaje de contacto
             </h2>
             <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <p style="margin: 10px 0;"><strong style="color: #374151;">Nombre:</strong> <span style="color: #111827;">${name}</span></p>
-              <p style="margin: 10px 0;"><strong style="color: #374151;">Email:</strong> <a href="mailto:${email}" style="color: #6366f1; text-decoration: none;">${email}</a></p>
+              <p style="margin: 10px 0;"><strong style="color: #374151;">Nombre:</strong> <span style="color: #111827;">${safeName}</span></p>
+              <p style="margin: 10px 0;"><strong style="color: #374151;">Email:</strong> <a href="mailto:${safeEmail}" style="color: #6366f1; text-decoration: none;">${safeEmail}</a></p>
             </div>
             <div style="margin-top: 20px;">
               <h3 style="color: #374151; margin-bottom: 10px;">Mensaje:</h3>
               <div style="background-color: #ffffff; padding: 15px; border-left: 4px solid #6366f1; border-radius: 4px;">
-                <p style="color: #111827; line-height: 1.6; white-space: pre-wrap;">${message.replace(/\n/g, '<br>')}</p>
+                <p style="color: #111827; line-height: 1.6; white-space: pre-wrap;">${safeMessage.replace(/\n/g, '<br>')}</p>
               </div>
             </div>
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; text-align: center; color: #6b7280; font-size: 12px;">
@@ -97,10 +120,23 @@ Este mensaje fue enviado desde el formulario de contacto de tu sitio web.
       })
 
       if (error) {
-        console.error('❌ Error al enviar email con Resend:', error)
+        console.error('❌ Error al enviar email con Resend:', JSON.stringify(error, null, 2))
+        
+        // Mensajes de error más específicos según el tipo de error
+        let errorMessage = 'Error al enviar el mensaje'
+        if (error.message) {
+          errorMessage = error.message
+        } else if (typeof error === 'object' && error !== null) {
+          // Resend puede devolver errores estructurados
+          const resendError = error as any
+          if (resendError.message) {
+            errorMessage = resendError.message
+          }
+        }
+        
         return res.status(500).json({ 
           error: 'Error al enviar el mensaje',
-          message: error.message || 'Error desconocido al enviar el email'
+          message: errorMessage
         })
       }
 
@@ -113,9 +149,15 @@ Este mensaje fue enviado desde el formulario de contacto de tu sitio web.
       })
     } catch (emailError) {
       console.error('❌ Error inesperado al enviar email:', emailError)
+      const errorMessage = emailError instanceof Error 
+        ? emailError.message 
+        : typeof emailError === 'object' && emailError !== null
+          ? JSON.stringify(emailError)
+          : 'Error desconocido al enviar el email'
+      
       return res.status(500).json({ 
         error: 'Error al enviar el mensaje',
-        message: emailError instanceof Error ? emailError.message : 'Error desconocido'
+        message: errorMessage
       })
     }
   } catch (error) {
