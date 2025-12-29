@@ -1,6 +1,12 @@
+import { useState } from 'react'
+import ContactModal from './ContactModal'
+
 export default function Footer() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+
   return (
-    <footer className="relative py-32 bg-background-dark overflow-hidden">
+    <>
+      <footer className="relative py-32 bg-background-dark overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50"></div>
       <div className="max-w-[720px] mx-auto px-6 text-center relative z-10">
         <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
@@ -14,7 +20,10 @@ export default function Footer() {
           <button className="w-full sm:w-auto px-8 h-14 bg-primary hover:bg-primary-dark text-white text-lg font-bold rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(99,102,241,0.6)] hover:-translate-y-1">
             Agendar mi sesión ahora
           </button>
-          <button className="w-full sm:w-auto px-8 h-14 border border-white/20 hover:border-white text-white font-bold rounded-full transition-all duration-300 hover:bg-white/5">
+          <button 
+            onClick={() => setIsContactModalOpen(true)}
+            className="w-full sm:w-auto px-8 h-14 border border-white/20 hover:border-white text-white font-bold rounded-full transition-all duration-300 hover:bg-white/5 flex items-center justify-center"
+          >
             Envíame un email
           </button>
         </div>
@@ -50,6 +59,12 @@ export default function Footer() {
         </p>
       </div>
     </footer>
+    
+    <ContactModal 
+      isOpen={isContactModalOpen} 
+      onClose={() => setIsContactModalOpen(false)} 
+    />
+    </>
   )
 }
 

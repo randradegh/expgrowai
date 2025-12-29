@@ -1,0 +1,129 @@
+// @ts-ignore - Vercel proporciona los tipos en runtime
+import { Resend } from 'resend'
+
+export default async function handler(req: any, res: any) {
+  // Habilitar CORS
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+
+  // Manejar preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end()
+  }
+
+  // Solo permitir POST
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' })
+  }
+
+  try {
+    const { name, email, message } = req.body
+
+    // Validar campos requeridos
+    if (!name || !email || !message) {
+      return res.status(400).json({ 
+        error: 'Todos los campos son requeridos' 
+      })
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ 
+        error: 'Email inválido' 
+      })
+    }
+
+    // Obtener la dirección de correo de destino desde variables de entorno
+    const toEmail = process.env.CONTACT_EMAIL || 'randradedev@gmail.com'
+    const resendApiKey = process.env.RESEND_API_KEY
+    
+    // Si no hay API key, retornamos error
+    if (!resendApiKey) {
+      console.error('❌ RESEND_API_KEY no configurada')
+      return res.status(500).json({ 
+        error: 'Servicio de email no configurado',
+        message: 'Por favor, configura RESEND_API_KEY en las variables de entorno'
+      })
+    }
+
+    // Inicializar Resend
+    const resend = new Resend(resendApiKey)
+
+    // Email desde el cual se envía (puede ser onboarding@resend.dev para pruebas)
+    // O usar un dominio verificado: 'Contacto <noreply@tudominio.com>'
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+
+    try {
+      // Enviar email usando Resend
+      const { data, error } = await resend.emails.send({
+        from: fromEmail,
+        to: [toEmail],
+        replyTo: email, // Para que puedas responder directamente al usuario
+        subject: `Nuevo mensaje de contacto de ${name}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 10px;">
+              Nuevo mensaje de contacto
+            </h2>
+            <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <p style="margin: 10px 0;"><strong style="color: #374151;">Nombre:</strong> <span style="color: #111827;">${name}</span></p>
+              <p style="margin: 10px 0;"><strong style="color: #374151;">Email:</strong> <a href="mailto:${email}" style="color: #6366f1; text-decoration: none;">${email}</a></p>
+            </div>
+            <div style="margin-top: 20px;">
+              <h3 style="color: #374151; margin-bottom: 10px;">Mensaje:</h3>
+              <div style="background-color: #ffffff; padding: 15px; border-left: 4px solid #6366f1; border-radius: 4px;">
+                <p style="color: #111827; line-height: 1.6; white-space: pre-wrap;">${message.replace(/\n/g, '<br>')}</p>
+              </div>
+            </div>
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; text-align: center; color: #6b7280; font-size: 12px;">
+              <p>Este mensaje fue enviado desde el formulario de contacto de tu sitio web.</p>
+            </div>
+          </div>
+        `,
+        text: `
+Nuevo mensaje de contacto
+
+Nombre: ${name}
+Email: ${email}
+
+Mensaje:
+${message}
+
+---
+Este mensaje fue enviado desde el formulario de contacto de tu sitio web.
+        `.trim(),
+      })
+
+      if (error) {
+        console.error('❌ Error al enviar email con Resend:', error)
+        return res.status(500).json({ 
+          error: 'Error al enviar el mensaje',
+          message: error.message || 'Error desconocido al enviar el email'
+        })
+      }
+
+      console.log('✅ Email enviado correctamente:', data?.id)
+
+      return res.status(200).json({ 
+        success: true,
+        message: 'Mensaje enviado correctamente',
+        id: data?.id
+      })
+    } catch (emailError) {
+      console.error('❌ Error inesperado al enviar email:', emailError)
+      return res.status(500).json({ 
+        error: 'Error al enviar el mensaje',
+        message: emailError instanceof Error ? emailError.message : 'Error desconocido'
+      })
+    }
+  } catch (error) {
+    console.error('Error al procesar contacto:', error)
+    return res.status(500).json({ 
+      error: 'Error al enviar el mensaje',
+      message: error instanceof Error ? error.message : 'Unknown error'
+    })
+  }
+}
+

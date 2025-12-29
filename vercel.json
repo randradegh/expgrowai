@@ -5,6 +5,10 @@
       "destination": "/api/hashnode"
     },
     {
+      "source": "/api/contact",
+      "destination": "/api/contact"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
