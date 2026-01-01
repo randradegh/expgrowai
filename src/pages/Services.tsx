@@ -21,7 +21,10 @@ export default function Services() {
                 IA Generativa que <span className="text-primary">Escala Resultados</span>
               </h1>
               <p className="text-lg text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed">
-                De la experimentación aislada a sistemas rentables y repetibles. Servicios especializados para potenciar equipos de Educación y Marketing con resultados medibles.
+                Transformamos la experimentación aislada con IA en sistemas rentables y repetibles que generan resultados tangibles. Ya no se trata de usar ChatGPT ocasionalmente y esperar resultados milagrosos. Nuestros servicios están diseñados para equipos profesionales de Educación y Marketing que buscan escalar su impacto sin aumentar proporcionalmente su carga de trabajo.
+              </p>
+              <p className="text-base text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed mt-4">
+                Cada proyecto que desarrollamos está fundamentado en metodologías probadas de Ingeniería de Prompts, diseño de sistemas de contenido y análisis de resultados. No vendemos herramientas ni promesas vacías: construimos procesos que tu equipo puede replicar, medir y optimizar de forma independiente. Desde workshops intensivos que transforman cómo tu equipo interactúa con modelos de IA, hasta implementaciones completas que automatizan flujos críticos de producción, cada solución está diseñada para generar retorno de inversión medible en menos de 6 meses.
               </p>
               <div className="flex flex-wrap gap-4 mt-2">
                 <button className="flex items-center justify-center rounded-full h-12 px-8 bg-primary text-white text-base font-bold hover:bg-primary-dark transition-transform hover:scale-105">
@@ -100,13 +103,40 @@ export default function Services() {
                     <li className="flex items-start gap-3">
                       <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
                       <div>
-                        <p className="font-bold text-slate-900 dark:text-white">Formatos Flexibles</p>
+                        <p className="font-bold text-slate-900 dark:text-white">Metodología Probada</p>
                         <p className="text-sm text-slate-600 dark:text-text-secondary">
-                          Workshop presencial, Curso online o Training in-company.
+                          Framework basado en técnicas de Prompt Engineering avaladas por la industria.
                         </p>
                       </div>
                     </li>
-                  </ul>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Capacitación Práctica</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">
+                          Ejercicios hands-on con casos reales de tu industria. Aplicación inmediata.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Formatos Flexibles</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">
+                          Workshop presencial, Curso online o Training in-company adaptado a tus horarios.
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Materiales y Recursos</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">
+                          Biblioteca de templates, guías de referencia y acceso a comunidad de práctica.
+                        </p>
+                      </div>
+                    </li>
+                </ul>
                 </div>
                 <button className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full h-12 px-8 bg-primary text-white font-bold hover:bg-primary-dark transition-colors mt-4">
                   Ver temario del workshop
@@ -146,7 +176,7 @@ export default function Services() {
                       <span className="text-xs font-bold uppercase">Después: Ingeniería de Prompts</span>
                     </div>
                     <p className="text-gray-300 text-sm italic">
-                      "Actúa como copywriter experto. Usa framework PAS (Problema-Agitación-Solución)..."
+                      "Actúa como un copywriter profesional especializado en ventas por email. Antes de escribir, analiza a detalle el producto y el perfil del cliente objetivo. Utiliza el framework PAS (Problema-Agitación-Solución) para captar la atención desde la primera frase, profundiza en las frustraciones y necesidades del lector, y plantea la solución de forma concreta y persuasiva. Mantén un tono humano, cercano y evita lenguaje genérico; emplea ejemplos y llamados a la acción claros. El objetivo es lograr un mensaje que convierta leads en clientes, inspire confianza e impulse el deseo de saber más. No imites tono 'spam'; prioriza la relevancia y la empatía en cada párrafo. Si hay datos o testimonios disponibles, intégralos en la narrativa."
                     </p>
                     <div className="mt-2 text-xs text-text-secondary border-t border-primary/20 pt-2 font-medium">
                       Resultado: Alta conversión, tono de marca preciso.
@@ -168,7 +198,7 @@ export default function Services() {
                   IA Generativa para Educación
                 </h2>
                 <p className="text-lg text-slate-600 dark:text-text-secondary">
-                  Transformamos la carga administrativa en tiempo de calidad con el alumno. De la experimentación personal a procesos institucionales repetibles.
+                  Transformamos la carga académico-administrativa que genera la docencia universitaria en tiempo de calidad con el alumno. De la experimentación personal a procesos institucionales repetibles.
                 </p>
               </div>
               <button className="flex min-w-fit items-center justify-center gap-2 rounded-full h-12 px-6 border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all">
@@ -185,7 +215,15 @@ export default function Services() {
                   Diseño Curricular Asistido
                 </h3>
                 <p className="text-slate-600 dark:text-text-secondary mb-6">
-                  Generación de rúbricas, programas académicos y materiales de evaluación personalizados en minutos, no horas.
+                  Su personal académico, una vez capacitado en nuestros talleres, podrá:
+                  <ul className="list-disc ml-6 mt-1">
+                    <li>Generar rúbricas y criterios de evaluación precisos en minutos.</li>
+                    <li>Diseñar programas académicos alineados con objetivos institucionales.</li>
+                    <li>Crear materiales de evaluación adaptados al perfil de sus alumnos.</li>
+                    <li>Automatizar la elaboración de exámenes y cuestionarios personalizados.</li>
+                    <li>Optimizar la carga administrativa para dedicar más tiempo al acompañamiento del alumnado.</li>
+                    <li>Actualizar y adaptar contenidos para mantener la relevancia académica.</li>
+                  </ul>
                 </p>
                 <div className="bg-background-light dark:bg-background-dark rounded-xl p-4 border border-gray-200 dark:border-border-dark">
                   <div className="flex justify-between items-center text-sm mb-2">
@@ -217,13 +255,15 @@ export default function Services() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 p-8 flex flex-col gap-4">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 w-fit">
-                    <span className="text-xs font-bold text-primary">Caso de Estudio</span>
+                    <span className="text-xs font-bold text-primary">Caso de Éxito</span>
                   </div>
                   <h3 className="text-2xl font-bold text-white leading-tight">
-                    Implementación en Universidad Técnica
+                    Implementación en el Bachillerato de la Universidad Autónoma de México
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    "Logramos personalizar el aprendizaje para 500 alumnos en simultáneo usando tutores IA controlados."
+                    En 2024 y 2025 capacitamos a 40 profesores de la Escuela Nacional Preparatoria y del Colegio de Ciencias y Humanidades 
+                    por medio de un curso llamado «Uso de la Inteligencia Artificial Generativa en la Enseñanza de la Química», 
+                    con resultados óptimos.
                   </p>
                 </div>
               </div>

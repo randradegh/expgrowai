@@ -117,3 +117,4 @@ Antes de reportar un problema, verifica:
 - [ ] Has revisado los logs en Vercel para el error específico
 - [ ] Tu cuenta de Resend tiene créditos disponibles (plan gratuito: 100 emails/día)
 
+
