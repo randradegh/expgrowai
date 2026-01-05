@@ -1,5 +1,10 @@
 import type { Plugin } from 'vite'
 import type { IncomingMessage, ServerResponse } from 'http'
+import { config } from 'dotenv'
+import { resolve } from 'path'
+
+// Cargar variables de entorno desde .env.local
+config({ path: resolve(process.cwd(), '.env.local') })
 
 export function contactPlugin(): Plugin {
   return {
@@ -70,6 +75,12 @@ function handleContactRequest(req: IncomingMessage, res: ServerResponse) {
 
           // Intentar enviar con Resend si está configurado, sino simular
           const resendApiKey = process.env.RESEND_API_KEY
+          
+          console.log('📧 Configuración de email (desarrollo):', {
+            hasApiKey: !!resendApiKey,
+            toEmail: process.env.CONTACT_EMAIL || 'randradedev@gmail.com',
+            fromEmail: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+          })
           
           if (resendApiKey) {
             try {

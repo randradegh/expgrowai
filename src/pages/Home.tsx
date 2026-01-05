@@ -1,7 +1,12 @@
+import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import ContactModal from '../components/ContactModal'
 
 export default function Home() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+  const [isTemarioModalOpen, setIsTemarioModalOpen] = useState(false)
+
   return (
     <div className="bg-background-light dark:bg-background-dark text-[#152211] dark:text-white overflow-x-hidden w-full">
       <Navbar />
@@ -32,18 +37,30 @@ export default function Home() {
               </h1>
               
               <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed max-w-[540px]">
-                Consultoría estratégica y formación avanzada en Diseño de Peticiones Profesionales para Modelos de AI (<span className="text-primary">Prompt Engineering</span>). Transforma procesos manuales en sistemas automatizados que generan resultados tangibles.
+                <span>
+                  <span className="block mb-2">
+                    Impulsa la transformación digital de tu organización con nuestra consultoría estratégica y formación avanzada en Diseño de Peticiones Profesionales para Modelos de IA (<span className="text-primary">Prompt Engineering</span>).
+                  </span>
+                  <ul className="list-none space-y-2 mt-2">
+                    <li className="flex items-start gap-2">
+                      <span className="material-symbols-outlined text-primary text-base mt-0.5">bolt</span>
+                      <span>Automatiza procesos manuales y ahorra tiempo en tareas clave.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="material-symbols-outlined text-primary text-base mt-0.5">school</span>
+                      <span>Capacítate para estructurar peticiones que generen respuestas personalizadas y de alto valor.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="material-symbols-outlined text-primary text-base mt-0.5">psychology</span>
+                      <span>Integra IA generativa de manera efectiva en tus flujos de trabajo, elevando la calidad de tus resultados.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="material-symbols-outlined text-primary text-base mt-0.5">trending_up</span>
+                      <span>Potencia la toma de decisiones, el desarrollo de contenidos y la innovación dentro de tu organización.</span>
+                    </li>
+                  </ul>
+                </span>
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                <button className="flex items-center justify-center gap-2 h-14 px-8 bg-primary hover:bg-primary-dark text-white text-base font-bold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:scale-105">
-                  <span className="material-symbols-outlined text-[20px]">calendar_month</span>
-                  Agenda una sesión exploratoria
-                </button>
-                <button className="flex items-center justify-center gap-2 h-14 px-8 border border-gray-600 hover:border-white text-white hover:bg-white/5 text-base font-bold rounded-full transition-all duration-300">
-                  Ver programas de formación
-                </button>
-              </div>
               
               <div className="flex items-center gap-4 mt-6 text-sm text-gray-400">
                 <div className="flex -space-x-2">
@@ -255,8 +272,12 @@ export default function Home() {
                   Aprende a comunicarte efectivamente con los LLMs (GPT-4, Claude, Gemini, Perplexity). Desde técnicas básicas de zero-shot hasta cadenas de pensamiento complejas.
                 </p>
                 <div className="mt-auto">
-                  <button className="px-6 py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all">
-                    Ver temario
+                  <button
+                    type="button"
+                    onClick={() => setIsTemarioModalOpen(true)}
+                    className="px-6 py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all"
+                  >
+                    Ver el programa
                   </button>
                 </div>
               </div>
@@ -281,8 +302,12 @@ export default function Home() {
                   No solo prompts sueltos. Construimos flujos de trabajo completos que integran IA en tu Sistema de Gestión de Contenidos, automatizando la investigación, redacción y distribución.
                 </p>
                 <div className="mt-auto">
-                  <button className="px-6 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-background-dark transition-all">
-                    Consultar servicio
+                  <button
+                    type="button"
+                    onClick={() => setIsContactModalOpen(true)}
+                    className="px-6 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-background-dark transition-all block w-full text-center"
+                  >
+                    Agenda una cita
                   </button>
                 </div>
               </div>
@@ -364,6 +389,187 @@ export default function Home() {
       </section>
       
       <Footer />
+      
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
+      
+      {/* Modal del Temario */}
+      {isTemarioModalOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          onClick={() => setIsTemarioModalOpen(false)}
+        >
+          <div 
+            className="relative w-full max-w-4xl bg-surface-dark border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-white/10 sticky top-0 bg-surface-dark z-10">
+              <h2 className="text-2xl md:text-3xl font-black text-white">Temario: Prompt Engineering</h2>
+              <button
+                onClick={() => setIsTemarioModalOpen(false)}
+                className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+                aria-label="Cerrar"
+              >
+                <span className="material-symbols-outlined">close</span>
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 md:p-8">
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 mb-4">
+                  <span className="material-symbols-outlined text-primary text-lg">schedule</span>
+                  <span className="text-primary font-bold text-sm">12 horas / 4 días</span>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Programa intensivo en vivo, 4 sesiones de 3 horas cada una. Aprenderás a dominar la comunicación con modelos de IA generativa para maximizar resultados en educación y marketing.
+                </p>
+              </div>
+
+              <ol className="space-y-6">
+                <li className="bg-background-dark/50 rounded-xl p-6 border border-white/5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                      1
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-3">
+                        Día 1 — Fundamentos de Prompt Engineering
+                      </h3>
+                      <ul className="space-y-2 text-gray-300 text-sm">
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>¿Qué es la IA generativa? Capacidades actuales y límites de modelos LLM (GPT, Claude, Gemini, etc.)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Principios y conceptos clave de prompt engineering</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Zero-shot, one-shot y few-shot prompting</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Buenas prácticas y errores frecuentes</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="bg-background-dark/50 rounded-xl p-6 border border-white/5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                      2
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-3">
+                        Día 2 — Técnicas Avanzadas de Construcción de Prompts
+                      </h3>
+                      <ul className="space-y-2 text-gray-300 text-sm">
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Cadenas de pensamiento (Chain of Thought) y pasos intermedios</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Diseño de instrucciones abiertas vs específicas</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Prompting para generación de texto, análisis y estructuración de respuestas</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Guía de creatividad, factualidad y control de outputs</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="bg-background-dark/50 rounded-xl p-6 border border-white/5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                      3
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-3">
+                        Día 3 — Integración y Automatización con IA
+                      </h3>
+                      <ul className="space-y-2 text-gray-300 text-sm">
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Uso práctico de APIs (OpenAI, Claude, Gemini) y herramientas de IA generativa</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Integración de prompts en flujos de trabajo y sistemas</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Sistemas de generación y revisión de contenido (casos reales)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Automatización de tareas educativas/comerciales con IA</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="bg-background-dark/50 rounded-xl p-6 border border-white/5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                      4
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-3">
+                        Día 4 — Ejercicios Prácticos y Optimizaciones
+                      </h3>
+                      <ul className="space-y-2 text-gray-300 text-sm">
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Diseño y revisión de prompts para casos propios de los participantes</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Evaluación de outputs: precisión, creatividad y seguridad</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Estrategias para afinación y reutilización de prompts</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+                          <span>Recursos, plantillas y roadmap de aprendizaje futuro</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+
+              <div className="mt-8 pt-6 border-t border-white/10 flex justify-center">
+                <button
+                  onClick={() => {
+                    setIsTemarioModalOpen(false)
+                    setIsContactModalOpen(true)
+                  }}
+                  className="px-8 py-3 rounded-full bg-primary hover:bg-primary-dark text-white font-bold transition-all shadow-lg shadow-primary/20"
+                >
+                  Quiero inscribirme
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

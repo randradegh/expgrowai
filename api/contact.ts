@@ -39,6 +39,12 @@ export default async function handler(req: any, res: any) {
     const toEmail = process.env.CONTACT_EMAIL || 'randradedev@gmail.com'
     const resendApiKey = process.env.RESEND_API_KEY
     
+    console.log('📧 Configuración de email:', {
+      toEmail,
+      hasApiKey: !!resendApiKey,
+      fromEmail: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+    })
+    
     // Si no hay API key, retornamos error
     if (!resendApiKey) {
       console.error('❌ RESEND_API_KEY no configurada')

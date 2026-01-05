@@ -17,9 +17,6 @@ export default function Footer() {
           No dejes que tu competencia te supere por velocidad. Agenda una llamada de 15 minutos para ver si podemos trabajar juntos.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="w-full sm:w-auto px-8 h-14 bg-primary hover:bg-primary-dark text-white text-lg font-bold rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(99,102,241,0.6)] hover:-translate-y-1">
-            Agendar mi sesión ahora
-          </button>
           <button 
             onClick={() => setIsContactModalOpen(true)}
             className="w-full sm:w-auto px-8 h-14 border border-white/20 hover:border-white text-white font-bold rounded-full transition-all duration-300 hover:bg-white/5 flex items-center justify-center"

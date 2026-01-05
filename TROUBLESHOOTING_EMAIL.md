@@ -118,3 +118,5 @@ Antes de reportar un problema, verifica:
 - [ ] Tu cuenta de Resend tiene créditos disponibles (plan gratuito: 100 emails/día)
 
 
+
+
