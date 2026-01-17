@@ -358,9 +358,6 @@ export default function Services() {
               <button className="flex items-center justify-center rounded-full h-14 px-10 bg-primary text-white text-lg font-bold hover:bg-primary-dark transition-transform hover:scale-105 shadow-[0_0_20px_rgba(99,102,241,0.3)]">
                 Agendar llamada de descubrimiento
               </button>
-              <button className="flex items-center justify-center rounded-full h-14 px-10 border border-slate-300 dark:border-border-dark text-slate-900 dark:text-white text-lg font-medium hover:bg-slate-200 dark:hover:bg-surface-dark transition-colors">
-                Ver planes de precios
-              </button>
             </div>
           </div>
         </section>

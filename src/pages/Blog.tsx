@@ -286,41 +286,6 @@ export default function Blog() {
                     </a>
                   </div>
                 )}
-                
-                {/* Newsletter Section (Inline) */}
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-dark to-background-dark border border-border-dark p-8 md:p-12 mt-8">
-                  <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-                  <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div className="max-w-md">
-                      <div className="inline-flex items-center gap-2 bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase mb-3">
-                        <span className="material-symbols-outlined text-sm">mail</span>
-                        Newsletter
-                      </div>
-                      <h3 className="text-white text-2xl font-bold mb-2">
-                        Un prompt semanal de alto impacto.
-                      </h3>
-                      <p className="text-text-muted">
-                        Recibe cada martes una estrategia de IA lista para copiar y pegar que te ahorrará horas de trabajo.
-                      </p>
-                    </div>
-                    <div className="w-full md:w-auto flex-1 max-w-sm">
-                      <form className="flex flex-col gap-3">
-                        <input
-                          className="w-full px-4 py-3 rounded-xl bg-[#0f180c] border border-border-dark text-white placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                          placeholder="tu@email.com"
-                          type="email"
-                        />
-                        <button
-                          className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-lg shadow-primary/20"
-                          type="button"
-                        >
-                          Suscribirme Gratis
-                        </button>
-                        <p className="text-center text-xs text-text-muted/60">Sin spam. Date de baja cuando quieras.</p>
-                      </form>
-                    </div>
-                  </div>
-                </div>
               </div>
               
               {/* Right Column: Sidebar (Sticky) */}
@@ -422,21 +387,6 @@ export default function Blog() {
                       </div>
                     ) : null
                   })()}
-                  
-                  {/* CTA Box */}
-                  <div className="relative overflow-hidden rounded-xl bg-primary text-white p-6 shadow-lg shadow-primary/20">
-                    <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/20 rounded-full blur-xl"></div>
-                    <h4 className="font-bold text-xl leading-tight mb-2 relative z-10">
-                      ¿Necesitas acelerar tu implementación?
-                    </h4>
-                    <p className="text-sm font-medium mb-4 opacity-90 relative z-10">
-                      Agenda una sesión de diagnóstico gratuita de 15 minutos.
-                    </p>
-                    <button className="w-full bg-background-dark text-white hover:bg-white hover:text-background-dark font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 relative z-10">
-                      <span>Reservar Ahora</span>
-                      <span className="material-symbols-outlined text-sm">calendar_month</span>
-                    </button>
-                  </div>
                 </div>
               </aside>
             </div>
