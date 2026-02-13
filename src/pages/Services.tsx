@@ -21,19 +21,14 @@ export default function Services() {
                 IA Generativa que <span className="text-primary">Escala Resultados</span>
               </h1>
               <p className="text-lg text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed">
-                Transformamos la experimentación aislada con IA en sistemas rentables y repetibles que generan resultados tangibles. Ya no se trata de usar ChatGPT ocasionalmente y esperar resultados milagrosos. Nuestros servicios están diseñados para equipos profesionales de Educación y Marketing que buscan escalar su impacto sin aumentar proporcionalmente su carga de trabajo.
+                Transformamos la experimentación aislada con IA en sistemas rentables y repetibles que generan resultados tangibles. Ya no se trata de usar ChatGPT ocasionalmente y esperar resultados milagrosos. 
+              </p>
+              <p className="text-lg text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed">
+                Nuestros servicios están diseñados para equipos profesionales de Educación y Marketing que buscan escalar su impacto sin aumentar proporcionalmente su carga de trabajo.
               </p>
               <p className="text-base text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed mt-4">
                 Cada proyecto que desarrollamos está fundamentado en metodologías probadas de Ingeniería de Prompts, diseño de sistemas de contenido y análisis de resultados. No vendemos herramientas ni promesas vacías: construimos procesos que tu equipo puede replicar, medir y optimizar de forma independiente. Desde workshops intensivos que transforman cómo tu equipo interactúa con modelos de IA, hasta implementaciones completas que automatizan flujos críticos de producción, cada solución está diseñada para generar retorno de inversión medible en menos de 6 meses.
               </p>
-              <div className="flex flex-wrap gap-4 mt-2">
-                <button className="flex items-center justify-center rounded-full h-12 px-8 bg-primary text-white text-base font-bold hover:bg-primary-dark transition-transform hover:scale-105">
-                  Ver todos los servicios
-                </button>
-                <button className="flex items-center justify-center rounded-full h-12 px-8 bg-transparent border border-slate-300 dark:border-border-dark text-slate-900 dark:text-white text-base font-medium hover:bg-slate-100 dark:hover:bg-surface-dark transition-colors">
-                  Casos de éxito
-                </button>
-              </div>
             </div>
             <div className="relative w-full aspect-square md:aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 border border-border-dark bg-surface-dark group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-50"></div>
@@ -191,19 +186,14 @@ export default function Services() {
         {/* Service 2 */}
         <section className="w-full px-4 py-20 bg-slate-100 dark:bg-[#111c0e]" id="service-2">
           <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-              <div className="flex flex-col gap-4 max-w-2xl">
-                <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 02</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-                  IA Generativa para Educación
-                </h2>
-                <p className="text-lg text-slate-600 dark:text-text-secondary">
-                  Transformamos la carga académico-administrativa que genera la docencia universitaria en tiempo de calidad con el alumno. De la experimentación personal a procesos institucionales repetibles.
-                </p>
-              </div>
-              <button className="flex min-w-fit items-center justify-center gap-2 rounded-full h-12 px-6 border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all">
-                Solicitar propuesta institucional
-              </button>
+            <div className="flex flex-col gap-4 max-w-2xl mb-12">
+              <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 02</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+                IA Generativa para Educación
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-text-secondary">
+                Transformamos la carga académico-administrativa que genera la docencia universitaria en tiempo de calidad con el alumno. De la experimentación personal a procesos institucionales repetibles.
+              </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               {/* Feature Card */}
@@ -336,11 +326,6 @@ export default function Services() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-4 mt-4">
-                <button className="flex items-center justify-center rounded-full h-12 px-8 bg-primary text-white text-base font-bold hover:bg-primary-dark transition-colors">
-                  Auditoría de Contenido
-                </button>
-              </div>
             </div>
           </div>
         </section>
@@ -354,11 +339,6 @@ export default function Services() {
             <p className="text-lg text-slate-600 dark:text-text-secondary max-w-2xl">
               No dejes que tu competencia te gane en la carrera de la IA. Empezá hoy a transformar tu operación con resultados tangibles.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <button className="flex items-center justify-center rounded-full h-14 px-10 bg-primary text-white text-lg font-bold hover:bg-primary-dark transition-transform hover:scale-105 shadow-[0_0_20px_rgba(99,102,241,0.3)]">
-                Agendar llamada de descubrimiento
-              </button>
-            </div>
           </div>
         </section>
       </main>
