@@ -65,24 +65,107 @@ export default function Curso() {
       <Navbar />
 
       <main className="flex flex-col items-center w-full pt-24">
-        {/* Hero */}
-        <section className="w-full px-4 py-16 md:py-24 max-w-5xl mx-auto text-center">
+        {/* Mensaje principal con imagen */}
+        <section className="w-full px-4 py-12 md:py-16 max-w-6xl mx-auto">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white text-center mb-10 md:mb-14 leading-tight">
+            Pasa del 20% al 99%: domina ChatGPT, Gemini, Claude y más...
+          </h1>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+            <div className="flex-1 min-w-0 space-y-8 text-center md:text-left order-2 md:order-1">
+            <p className="flex items-start gap-3 justify-center md:justify-start text-lg md:text-xl text-slate-600 dark:text-gray-300 leading-relaxed">
+              <span className="material-symbols-outlined text-primary flex-shrink-0 text-2xl" aria-hidden>insights</span>
+              Si ya usas ChatGPT pero sientes que solo aprovechas el 20% de su potencial...
+            </p>
+            <p className="flex items-start gap-3 justify-center md:justify-start text-lg md:text-xl text-slate-600 dark:text-gray-300 leading-relaxed">
+              <span className="material-symbols-outlined text-primary flex-shrink-0 text-2xl" aria-hidden>apps</span>
+              Si has escuchado de Gemini, Claude, Perplexity pero no sabes cuándo usar cada uno...
+            </p>
+            <p className="flex items-start gap-3 justify-center md:justify-start text-lg md:text-xl text-slate-600 dark:text-gray-300 leading-relaxed">
+              <span className="material-symbols-outlined text-primary flex-shrink-0 text-2xl" aria-hidden>tune</span>
+              Si tus prompts funcionan &quot;a veces&quot; pero no tienes un método consistente...
+            </p>
+            <p className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">
+              Este curso es para ti.
+            </p>
+
+            <div className="space-y-8">
+            <div>
+              <h2 className="flex items-center justify-center md:justify-start gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4">
+                <span className="material-symbols-outlined text-primary">target</span>
+                Qué vas a lograr
+              </h2>
+              <ul className="space-y-3 text-slate-600 dark:text-gray-300">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Crear prompts que funcionan a la primera (usando meta-prompting)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Elegir la herramienta correcta para cada tarea (y por qué importa)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Convertir investigación de 3 horas en 20 minutos con NotebookLM</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Combinar plataformas en workflows que multiplican resultados</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-surface-dark/50 dark:bg-surface-dark/50 rounded-2xl p-6 md:p-8 border border-border-dark">
+              <h2 className="flex items-center justify-center md:justify-start gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4">
+                <span className="material-symbols-outlined text-primary">menu_book</span>
+                Programa (10 horas · 5 sesiones)
+              </h2>
+              <ol className="space-y-2 text-slate-600 dark:text-gray-300 text-center md:text-left">
+                <li><strong className="text-slate-900 dark:text-white">Sesión 1:</strong> Prompts que crean prompts</li>
+                <li><strong className="text-slate-900 dark:text-white">Sesión 2:</strong> ChatGPT vs Gemini vs Claude vs Perplexity</li>
+                <li><strong className="text-slate-900 dark:text-white">Sesión 3:</strong> Domina el ecosistema Gemini</li>
+                <li><strong className="text-slate-900 dark:text-white">Sesión 4:</strong> NotebookLM como centro de investigación</li>
+                <li><strong className="text-slate-900 dark:text-white">Sesión 5:</strong> Workflows multi-plataforma</li>
+              </ol>
+            </div>
+
+            <div>
+              <h2 className="flex items-center justify-center md:justify-start gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4">
+                <span className="material-symbols-outlined text-primary">auto_awesome</span>
+                Incluye
+              </h2>
+              <ul className="flex flex-wrap justify-center md:justify-start gap-3 text-sm text-slate-600 dark:text-gray-300">
+                <li className="px-4 py-2 rounded-full bg-surface-dark border border-border-dark">Ejercicios prácticos con casos reales</li>
+                <li className="px-4 py-2 rounded-full bg-surface-dark border border-border-dark">Templates de prompts probados</li>
+                <li className="px-4 py-2 rounded-full bg-surface-dark border border-border-dark">Proyecto integrador final</li>
+                <li className="px-4 py-2 rounded-full bg-surface-dark border border-border-dark">Grupo de práctica post-curso</li>
+              </ul>
+            </div>
+            </div>
+          </div>
+            <div className="flex-shrink-0 w-full md:w-2/5 lg:w-2/5 order-1 md:order-2">
+              <img
+                src="/hero_image_02.png"
+                alt="Advanced Prompting Flow: integración de ChatGPT, Gemini, Claude, Perplexity, NotebookLM y workflows"
+                className="w-full rounded-2xl shadow-xl object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Hero / Inversión */}
+        <section className="w-full px-4 py-12 md:py-20 max-w-5xl mx-auto text-center border-t border-gray-200 dark:border-border-dark">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-dark border border-border-dark w-fit mb-6">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-xs font-medium text-text-secondary uppercase tracking-wider">
               Nivel Intermedio
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white mb-6">
             Curso <span className="text-primary">Prompt Engineering</span>
-            <br />
-            <span className="text-2xl md:text-3xl font-bold text-slate-600 dark:text-gray-300 mt-2 block">
+            <span className="text-xl md:text-2xl font-bold text-slate-600 dark:text-gray-300 mt-2 block">
               10 horas · 5 sesiones
             </span>
-          </h1>
-          <p className="text-lg text-slate-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed mb-10">
-            Meta-prompting, comparativa de plataformas, ecosistema Gemini, NotebookLM y workflows multi-plataforma. 100% práctico con ejercicios y plantillas listas para usar.
-          </p>
+          </h2>
 
           {/* Características e inversión */}
           <div className="flex flex-wrap justify-center gap-4 mb-10">
