@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ContactModal from '../components/ContactModal'
+import InscripcionModal from '../components/InscripcionModal'
 
 const SESSIONES = [
   {
@@ -59,6 +60,7 @@ const SESSIONES = [
 
 export default function Curso() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+  const [isInscripcionModalOpen, setIsInscripcionModalOpen] = useState(false)
 
   return (
     <div className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
@@ -121,8 +123,8 @@ export default function Curso() {
               </h2>
               <ol className="space-y-2 text-slate-600 dark:text-gray-300 text-center md:text-left">
                 <li><strong className="text-slate-900 dark:text-white">Sesión 1:</strong> Prompts que crean prompts</li>
-                <li><strong className="text-slate-900 dark:text-white">Sesión 2:</strong> ChatGPT vs Gemini vs Claude vs Perplexity</li>
-                <li><strong className="text-slate-900 dark:text-white">Sesión 3:</strong> Domina el ecosistema Gemini</li>
+                <li><strong className="text-slate-900 dark:text-white">Sesión 2:</strong> Comparativa estratégica: Eligiendo el LLM correcto</li>
+                <li><strong className="text-slate-900 dark:text-white">Sesión 3:</strong> Conoce el ecosistema Gemini</li>
                 <li><strong className="text-slate-900 dark:text-white">Sesión 4:</strong> NotebookLM como centro de investigación</li>
                 <li><strong className="text-slate-900 dark:text-white">Sesión 5:</strong> Workflows multi-plataforma</li>
               </ol>
@@ -203,31 +205,35 @@ export default function Curso() {
           </h2>
 
           {/* Características e inversión */}
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-dark border border-border-dark text-sm text-gray-300">
-              <span className="material-symbols-outlined text-primary text-lg">target</span>
+          <div className="flex flex-wrap justify-center gap-5 md:gap-6 mb-10">
+            <span className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-surface-dark border border-border-dark text-base md:text-lg text-gray-300">
+              <span className="material-symbols-outlined text-primary text-xl md:text-2xl">target</span>
               100% práctico · Ejercicios con casos reales · Templates incluidos
             </span>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-dark border border-border-dark text-sm text-gray-300">
-              <span className="material-symbols-outlined text-primary text-lg">calendar_today</span>
+            <span className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-surface-dark border border-border-dark text-base md:text-lg text-gray-300">
+              <span className="material-symbols-outlined text-primary text-xl md:text-2xl">calendar_today</span>
               2, 3, 6, 9 y 10 marzo
             </span>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-dark border border-border-dark text-sm text-gray-300">
-              <span className="material-symbols-outlined text-primary text-lg">schedule</span>
+            <span className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-surface-dark border border-border-dark text-base md:text-lg text-gray-300">
+              <span className="material-symbols-outlined text-primary text-xl md:text-2xl">schedule</span>
+              19 a 21 horas
+            </span>
+            <span className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-surface-dark border border-border-dark text-base md:text-lg text-gray-300">
+              <span className="material-symbols-outlined text-primary text-xl md:text-2xl">timer</span>
               10 horas · 5 sesiones
             </span>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-dark border border-border-dark text-sm text-gray-300">
-              <span className="material-symbols-outlined text-primary text-lg">computer</span>
+            <span className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-surface-dark border border-border-dark text-base md:text-lg text-gray-300">
+              <span className="material-symbols-outlined text-primary text-xl md:text-2xl">computer</span>
               Online · Google Meet
             </span>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/40 text-primary font-bold text-sm">
-              <span className="material-symbols-outlined text-lg">payments</span>
+            <span className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/20 border border-primary/40 text-primary font-bold text-base md:text-lg">
+              <span className="material-symbols-outlined text-xl md:text-2xl">payments</span>
               Inversión: $1,700 MX · Cupos limitados
             </span>
           </div>
 
           <button
-            onClick={() => setIsContactModalOpen(true)}
+            onClick={() => setIsInscripcionModalOpen(true)}
             className="inline-flex items-center justify-center gap-2 rounded-full h-14 px-10 bg-primary text-white text-lg font-bold hover:bg-primary-dark transition-all shadow-[0_0_25px_rgba(99,102,241,0.4)] hover:scale-105"
           >
             <span className="material-symbols-outlined">edit_calendar</span>
@@ -305,6 +311,10 @@ export default function Curso() {
       <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
+      />
+      <InscripcionModal
+        isOpen={isInscripcionModalOpen}
+        onClose={() => setIsInscripcionModalOpen(false)}
       />
     </div>
   )
