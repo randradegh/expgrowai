@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -133,10 +134,13 @@ export default function Services() {
                     </li>
                 </ul>
                 </div>
-                <button className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full h-12 px-8 bg-primary text-white font-bold hover:bg-primary-dark transition-colors mt-4">
+                <Link
+                  to="/curso"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full h-12 px-8 bg-primary text-white font-bold hover:bg-primary-dark transition-colors mt-4"
+                >
                   Ver temario del workshop
                   <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </button>
+                </Link>
               </div>
               {/* Mini Case Study */}
               <div className="bg-[#111c0e] p-8 md:p-12 relative overflow-hidden">

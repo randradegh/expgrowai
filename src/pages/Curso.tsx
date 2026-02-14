@@ -128,18 +128,6 @@ export default function Curso() {
               </ol>
             </div>
 
-            <div>
-              <h2 className="flex items-center justify-center md:justify-start gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4">
-                <span className="material-symbols-outlined text-primary">auto_awesome</span>
-                Incluye
-              </h2>
-              <ul className="flex flex-wrap justify-center md:justify-start gap-3 text-sm text-slate-600 dark:text-gray-300">
-                <li className="px-4 py-2 rounded-full bg-surface-dark border border-border-dark">Ejercicios prácticos con casos reales</li>
-                <li className="px-4 py-2 rounded-full bg-surface-dark border border-border-dark">Templates de prompts probados</li>
-                <li className="px-4 py-2 rounded-full bg-surface-dark border border-border-dark">Proyecto integrador final</li>
-                <li className="px-4 py-2 rounded-full bg-surface-dark border border-border-dark">Grupo de práctica post-curso</li>
-              </ul>
-            </div>
             </div>
           </div>
             <div className="flex-shrink-0 w-full md:w-2/5 lg:w-2/5 order-1 md:order-2">
@@ -148,6 +136,53 @@ export default function Curso() {
                 alt="Advanced Prompting Flow: integración de ChatGPT, Gemini, Claude, Perplexity, NotebookLM y workflows"
                 className="w-full rounded-2xl shadow-xl object-cover"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Incluye - grid estilo imagen */}
+        <section className="w-full py-16 md:py-24 bg-slate-900 dark:bg-slate-950">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-12">
+              Qué incluye el curso
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+              <div className="flex gap-4">
+                <span className="material-symbols-outlined text-primary flex-shrink-0 text-3xl" aria-hidden>psychology</span>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">Ejercicios prácticos con casos reales</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Aplica lo aprendido con ejercicios guiados basados en situaciones reales de negocio y comunicación.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <span className="material-symbols-outlined text-primary flex-shrink-0 text-3xl" aria-hidden>description</span>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">Templates de prompts probados</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Lleva plantillas listas para análisis, creatividad y resolución de problemas desde el día uno.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <span className="material-symbols-outlined text-primary flex-shrink-0 text-3xl" aria-hidden>integration_instructions</span>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">Proyecto integrador final</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Un proyecto que integra meta-prompting, herramientas y NotebookLM para consolidar todo el curso.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <span className="material-symbols-outlined text-primary flex-shrink-0 text-3xl" aria-hidden>groups</span>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">Grupo de práctica post-curso</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Acceso a una comunidad para seguir practicando y resolviendo dudas después de las sesiones.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

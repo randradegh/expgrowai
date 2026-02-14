@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ContactModal from '../components/ContactModal'
@@ -272,13 +273,12 @@ export default function Home() {
                   Aprende a comunicarte efectivamente con los LLMs (GPT-4, Claude, Gemini, Perplexity). Desde técnicas básicas de zero-shot hasta cadenas de pensamiento complejas.
                 </p>
                 <div className="mt-auto">
-                  <button
-                    type="button"
-                    onClick={() => setIsTemarioModalOpen(true)}
-                    className="px-6 py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all"
+                  <Link
+                    to="/curso"
+                    className="inline-flex px-6 py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all"
                   >
                     Ver el programa
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
