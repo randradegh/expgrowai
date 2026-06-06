@@ -2,6 +2,7 @@
 
 Sitio web profesional para consultoría en IA Generativa, desarrollado con React, TypeScript, Tailwind CSS y Vite.
 
+## Versión de Junio de 2026.
 ## 🚀 Características
 
 - **React 18** con TypeScript
