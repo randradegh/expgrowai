@@ -12,7 +12,7 @@ export default function Home() {
     <div className="bg-background-light dark:bg-background-dark text-[#152211] dark:text-white overflow-x-hidden w-full">
       <Navbar />
       
-      {/* Hero Section */}
+      {/* ===== HERO — MARKETING DIGITAL ===== */}
       <header className="relative min-h-screen flex items-center pt-24">
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
@@ -25,45 +25,45 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 w-fit">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                 <span className="text-primary text-xs font-bold tracking-wide uppercase">
-                  Disponible para nuevos proyectos
+                  Marketing Digital + IA Generativa
                 </span>
               </div>
               
               <h1 className="text-4xl md:text-6xl font-black leading-[1.1] tracking-tight text-white">
-                Escala tu impacto{' '}
+                Crea contenido que{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
-                  educativo y de marketing
+                  vende y convierte
                 </span>{' '}
-                con IA Generativa
+                con el poder de la IA
               </h1>
               
               <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed max-w-[540px]">
                 <span>
                   <span className="block mb-2">
-                    Impulsa la transformación digital de tu organización con nuestra consultoría estratégica y formación avanzada en Diseño de Peticiones Profesionales para Modelos de IA (<span className="text-primary">Prompt Engineering</span>).
+                    Automatiza tu producción de contenido, optimiza campañas y escala tu estrategia de marketing digital sin perder la esencia de tu marca. Nuestra consultoría te enseña a dominar la IA Generativa para resultados reales.
                   </span>
                   <ul className="list-none space-y-2 mt-2">
                     <li className="flex items-start gap-2">
-                      <span className="material-symbols-outlined text-primary text-base mt-0.5">bolt</span>
-                      <span>Automatiza procesos manuales y ahorra tiempo en tareas clave.</span>
+                      <span className="material-symbols-outlined text-primary text-base mt-0.5">auto_awesome</span>
+                      <span>Genera contenido de alto impacto en segundos — emails, posts, guiones, landing pages.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="material-symbols-outlined text-primary text-base mt-0.5">school</span>
-                      <span>Capacítate para estructurar peticiones que generen respuestas personalizadas y de alto valor.</span>
+                      <span className="material-symbols-outlined text-primary text-base mt-0.5">campaign</span>
+                      <span>Diseña campañas multicanal con embudos optimizados por IA que convierten más.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="material-symbols-outlined text-primary text-base mt-0.5">psychology</span>
-                      <span>Integra IA generativa de manera efectiva en tus flujos de trabajo, elevando la calidad de tus resultados.</span>
+                      <span className="material-symbols-outlined text-primary text-base mt-0.5">tune</span>
+                      <span>Entrena modelos con tu brand voice para que la IA hable como tu mejor copywriter.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="material-symbols-outlined text-primary text-base mt-0.5">trending_up</span>
-                      <span>Potencia la toma de decisiones, el desarrollo de contenidos y la innovación dentro de tu organización.</span>
+                      <span className="material-symbols-outlined text-primary text-base mt-0.5">analytics</span>
+                      <span>Mide, ajusta y escala: convierte datos en decisiones de contenido con IA.</span>
                     </li>
                   </ul>
                 </span>
               </p>
               
-              <div className="flex items-center gap-4 mt-6 text-sm text-gray-400">
+              <div className="flex flex-wrap items-center gap-4 mt-6 text-sm text-gray-400">
                 <div className="flex -space-x-2">
                   <div
                     className="w-8 h-8 rounded-full border-2 border-background-dark bg-gray-700 bg-cover bg-center"
@@ -87,7 +87,23 @@ export default function Home() {
                     }}
                   ></div>
                 </div>
-                <p>+100 profesionales formados este año</p>
+                <p>+20 marcas han escalado su contenido con nosotros</p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <button
+                  type="button"
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="px-6 py-3 rounded-full bg-primary hover:bg-primary-dark text-white font-bold transition-all shadow-lg shadow-primary/20"
+                >
+                  Agenda una cita gratuita
+                </button>
+                <Link
+                  to="/servicios"
+                  className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-all"
+                >
+                  Ver servicios
+                </Link>
               </div>
             </div>
             
@@ -109,8 +125,17 @@ export default function Home() {
                       <span className="material-symbols-outlined">auto_awesome</span>
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm">Generación de contenido</p>
+                      <p className="text-white font-bold text-sm">Automatización de contenido</p>
                       <p className="text-primary text-xs">+300% eficiencia</p>
+                    </div>
+                  </div>
+                  <div className="glass-panel p-4 rounded-xl flex items-center gap-4 animate-[float_4s_ease-in-out_infinite_0.5s]">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                      <span className="material-symbols-outlined">trending_up</span>
+                    </div>
+                    <div>
+                      <p className="text-white font-bold text-sm">Campañas optimizadas por IA</p>
+                      <p className="text-primary text-xs">+40% conversión</p>
                     </div>
                   </div>
                 </div>
@@ -120,12 +145,124 @@ export default function Home() {
         </div>
       </header>
       
-      {/* Problems Section */}
+      {/* ===== EDUCACIÓN — SEGUNDO HERO ===== */}
+      <section className="py-24 md:py-32 bg-[#111c0d] relative overflow-hidden">
+        <div className="absolute left-0 top-0 w-1/2 h-full bg-gradient-to-r from-primary/5 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
+        
+        <div className="max-w-[1280px] mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            {/* Education Content */}
+            <div className="flex-1 flex flex-col gap-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 w-fit">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span className="text-primary text-xs font-bold tracking-wide uppercase">
+                  Formación en Prompt Engineering
+                </span>
+              </div>
+              
+              <h2 className="text-3xl md:text-5xl font-black leading-[1.1] tracking-tight text-white">
+                Capacita a tu equipo para{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
+                  hablar el idioma de la IA
+                </span>
+              </h2>
+              
+              <p className="text-gray-300 text-lg leading-relaxed max-w-[600px]">
+                No se trata de usar ChatGPT. Se trata de dominar el Prompt Engineering: la habilidad de comunicarte con modelos de IA para obtener resultados precisos, repetibles y alineados a tu negocio.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                <div className="flex gap-4 p-5 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all">
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+                    <span className="material-symbols-outlined">school</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm">Workshops en Vivo</h4>
+                    <p className="text-gray-400 text-xs mt-1">12 horas, 4 sesiones prácticas con casos reales de tu industria.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 p-5 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all">
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+                    <span className="material-symbols-outlined">description</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm">Biblioteca de Prompts</h4>
+                    <p className="text-gray-400 text-xs mt-1">Plantillas reutilizables para marketing, educación y operaciones.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 p-5 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all">
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+                    <span className="material-symbols-outlined">groups</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm">Capacitación In-Company</h4>
+                    <p className="text-gray-400 text-xs mt-1">Programas diseñados a la medida de tu organización y tus objetivos.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 p-5 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all">
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+                    <span className="material-symbols-outlined">assignment_turned_in</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm">Certificación Práctica</h4>
+                    <p className="text-gray-400 text-xs mt-1">Evalúa y certifica las habilidades de tu equipo en IA Generativa.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap items-center gap-4 mt-4">
+                <button
+                  type="button"
+                  onClick={() => setIsTemarioModalOpen(true)}
+                  className="px-6 py-3 rounded-full bg-primary hover:bg-primary-dark text-white font-bold transition-all shadow-lg shadow-primary/20"
+                >
+                  Ver temario completo
+                </button>
+                <Link
+                  to="/curso"
+                  className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-all"
+                >
+                  Más información
+                </Link>
+              </div>
+            </div>
+            
+            {/* Education Image */}
+            <div className="flex-1 w-full lg:w-auto relative group">
+              <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full opacity-30 group-hover:opacity-40 transition-opacity duration-700"></div>
+              <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#1a2b15]">
+                <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent z-10"></div>
+                <div
+                  className="w-full h-full bg-cover bg-center opacity-80"
+                  style={{
+                    backgroundImage: "url('/hero_image_02.png')",
+                  }}
+                ></div>
+                {/* Floating Card */}
+                <div className="absolute bottom-8 left-8 right-8 z-20 flex flex-col gap-3">
+                  <div className="glass-panel p-4 rounded-xl flex items-center gap-4 animate-[float_4s_ease-in-out_infinite_1s]">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                      <span className="material-symbols-outlined">military_tech</span>
+                    </div>
+                    <div>
+                      <p className="text-white font-bold text-sm">+100 profesionales formados</p>
+                      <p className="text-primary text-xs">2024 — 2025</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* ===== PROBLEMAS QUE RESUELVES ===== */}
       <section className="py-24 bg-background-dark relative" id="servicios">
         <div className="max-w-[960px] mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-3">
-              Problemas que resuelves
+              Problemas que resolvemos
             </h2>
             <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
               Deja de perder tiempo en procesos manuales
@@ -172,7 +309,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Audience/Segment Section */}
+      {/* ===== AUDIENCIA — MARKETING PRIMERO ===== */}
       <section className="py-24 bg-[#111c0d] relative overflow-hidden" id="quien-soy">
         <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
         <div className="max-w-[1280px] mx-auto px-6">
@@ -180,16 +317,52 @@ export default function Home() {
             <div className="w-full md:w-1/3 sticky top-24">
               <h2 className="text-3xl md:text-4xl font-black text-white mb-6">¿A quién ayudo?</h2>
               <p className="text-gray-400 mb-8">
-                Mi enfoque híbrido combina la estrategia de negocio con la técnica de la ingeniería de prompts. No solo enseño herramientas, diseño sistemas.
+                Mi enfoque híbrido combina la estrategia de marketing digital con la técnica de la ingeniería de prompts. No solo enseño herramientas, diseño sistemas que transforman negocios.
               </p>
-              <a className="inline-flex items-center text-primary font-bold hover:text-white transition-colors" href="#">
+              <Link
+                to="/sobre-mi"
+                className="inline-flex items-center text-primary font-bold hover:text-white transition-colors"
+              >
                 Conoce más sobre mi trayectoria
                 <span className="material-symbols-outlined ml-1">arrow_forward</span>
-              </a>
+              </Link>
             </div>
             
             <div className="w-full md:w-2/3 flex flex-col gap-6">
-              {/* Segment 1 */}
+              {/* Segment 1 — MARKETING (primero) */}
+              <div className="flex gap-6 p-8 rounded-3xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all">
+                <div className="shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-border-dark flex items-center justify-center text-white">
+                    <span className="material-symbols-outlined text-3xl">campaign</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Marketing y Negocios</h3>
+                  <p className="text-gray-400 text-sm mb-4">
+                    Escala tu producción de contenido sin perder calidad. Implementa workflows que combinan creatividad humana con velocidad artificial para campañas que realmente convierten.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm text-gray-300">
+                      <span className="material-symbols-outlined text-primary text-base">check_circle</span>
+                      Automatización de contenido multicanal
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-gray-300">
+                      <span className="material-symbols-outlined text-primary text-base">check_circle</span>
+                      Optimización de campañas con datos de IA
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-gray-300">
+                      <span className="material-symbols-outlined text-primary text-base">check_circle</span>
+                      Brand voice y consistencia de marca
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-gray-300">
+                      <span className="material-symbols-outlined text-primary text-base">check_circle</span>
+                      Análisis de mercado y tendencias con IA
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              {/* Segment 2 — EDUCACIÓN (segundo) */}
               <div className="flex gap-6 p-8 rounded-3xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all">
                 <div className="shrink-0">
                   <div className="w-16 h-16 rounded-2xl bg-border-dark flex items-center justify-center text-white">
@@ -199,7 +372,7 @@ export default function Home() {
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">Educadores y Formadores</h3>
                   <p className="text-gray-400 text-sm mb-4">
-                    Transforma tu manera de enseñar. Crea tutores personalizados, genera rúbricas en segundos y adapta el contenido a diferentes estilos de aprendizaje.
+                    Transforma tu manera de enseñar. Crea tutores personalizados, genera rúbricas en segundos y adapta el contenido a diferentes estilos de aprendizaje con el poder de la IA.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm text-gray-300">
@@ -210,30 +383,13 @@ export default function Home() {
                       <span className="material-symbols-outlined text-primary text-base">check_circle</span>
                       Feedback automatizado y personalizado
                     </li>
-                  </ul>
-                </div>
-              </div>
-              
-              {/* Segment 2 */}
-              <div className="flex gap-6 p-8 rounded-3xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all">
-                <div className="shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-border-dark flex items-center justify-center text-white">
-                    <span className="material-symbols-outlined text-3xl">campaign</span>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Marketing y Negocios</h3>
-                  <p className="text-gray-400 text-sm mb-4">
-                    Escala tu producción de contenido sin perder calidad. Implementa workflows que combinan creatividad humana con velocidad artificial.
-                  </p>
-                  <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm text-gray-300">
                       <span className="material-symbols-outlined text-primary text-base">check_circle</span>
-                      Sistemas de contenido infinito
+                      Diseño curricular asistido
                     </li>
                     <li className="flex items-center gap-2 text-sm text-gray-300">
                       <span className="material-symbols-outlined text-primary text-base">check_circle</span>
-                      Análisis de mercado y tendencias con IA
+                      Evaluaciones y rúbricas generadas por IA
                     </li>
                   </ul>
                 </div>
@@ -243,7 +399,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Featured Services */}
+      {/* ===== SERVICIOS DESTACADOS ===== */}
       <section className="py-24 bg-background-dark">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="flex flex-col items-center text-center mb-16">
@@ -254,36 +410,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Service 1 */}
-            <div className="relative group overflow-hidden rounded-[2rem]">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{
-                  backgroundImage:
-                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDd7iaKTtYAhQ1mx3bmLbdtSWn-PjHAt2vuyKoR3G0N_sPO_nIXcUDMUArUZZKopjXHsNeatQZcLmwki-IhDsWWti_mxcYYcShpETbIkb6f-l2b9UR5RX9EvCZeIL09v-9a3eMnhVzsgezgvQNHDomid5UTwNhqeAge-v6r6lqNTqibF_9oVq9u5qPz-_JLokWBd7l-MaZtfMKx0RIZpd9Z6OaxQ_7izF7o3mbfKgwgPDJtScekjcZaxRZUDx8LlUM6qNGy44GRxtYA')",
-                }}
-              ></div>
-              <div className="absolute inset-0 bg-background-dark/90 group-hover:bg-background-dark/80 transition-colors"></div>
-              <div className="relative p-10 h-full flex flex-col items-start min-h-[400px]">
-                <div className="w-14 h-14 bg-primary text-white rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-primary/20">
-                  <span className="material-symbols-outlined text-3xl">terminal</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Formación en <span className="text-primary">Prompt Engineering</span></h3>
-                <p className="text-gray-300 mb-8 leading-relaxed">
-                  Aprende a comunicarte efectivamente con los LLMs (GPT-4, Claude, Gemini, Perplexity). Desde técnicas básicas de zero-shot hasta cadenas de pensamiento complejas.
-                </p>
-                <div className="mt-auto">
-                  <Link
-                    to="/curso"
-                    className="inline-flex px-6 py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all"
-                  >
-                    Ver el programa
-                  </Link>
-                </div>
-              </div>
-            </div>
-            
-            {/* Service 2 */}
+            {/* Service 1 — MARKETING (primero) */}
             <div className="relative group overflow-hidden rounded-[2rem]">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
@@ -299,7 +426,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">Diseño de Sistemas de Contenido</h3>
                 <p className="text-gray-300 mb-8 leading-relaxed">
-                  No solo prompts sueltos. Construimos flujos de trabajo completos que integran IA en tu Sistema de Gestión de Contenidos, automatizando la investigación, redacción y distribución.
+                  No solo prompts sueltos. Construimos flujos de trabajo completos que integran IA en tu Sistema de Gestión de Contenidos, automatizando la investigación, redacción y distribución para tu marketing digital.
                 </p>
                 <div className="mt-auto">
                   <button
@@ -312,17 +439,46 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            
+            {/* Service 2 — EDUCACIÓN (segundo) */}
+            <div className="relative group overflow-hidden rounded-[2rem]">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDd7iaKTtYAhQ1mx3bmLbdtSWn-PjHAt2vuyKoR3G0N_sPO_nIXcUDMUArUZZKopjXHsNeatQZcLmwki-IhDsWWti_mxcYYcShpETbIkb6f-l2b9UR5RX9EvCZeIL09v-9a3eMnhVzsgezgvQNHDomid5UTwNhqeAge-v6r6lqNTqibF_9oVq9u5qPz-_JLokWBd7l-MaZtfMKx0RIZpd9Z6OaxQ_7izF7o3mbfKgwgPDJtScekjcZaxRZUDx8LlUM6qNGy44GRxtYA')",
+                }}
+              ></div>
+              <div className="absolute inset-0 bg-background-dark/90 group-hover:bg-background-dark/80 transition-colors"></div>
+              <div className="relative p-10 h-full flex flex-col items-start min-h-[400px]">
+                <div className="w-14 h-14 bg-primary text-white rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-primary/20">
+                  <span className="material-symbols-outlined text-3xl">terminal</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3">Formación en <span className="text-primary">Prompt Engineering</span></h3>
+                <p className="text-gray-300 mb-8 leading-relaxed">
+                  Aprende a comunicarte efectivamente con los LLMs (GPT-4, Claude, Gemini, Perplexity). Desde técnicas básicas de zero-shot hasta cadenas de pensamiento complejas para transformar tu trabajo.
+                </p>
+                <div className="mt-auto">
+                  <Link
+                    to="/curso"
+                    className="inline-flex px-6 py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all"
+                  >
+                    Ver el programa
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
       
-      {/* Testimonials */}
+      {/* ===== TESTIMONIOS ===== */}
       <section className="py-24 bg-[#1a2915]" id="testimonios">
         <div className="max-w-[1280px] mx-auto px-6">
           <h2 className="text-3xl font-black text-white mb-12 text-center">Lo que dicen mis clientes</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Testimonial 1 */}
+            {/* Testimonial 1 — Marketing */}
             <div className="bg-surface-dark p-8 rounded-2xl border border-white/5 relative">
               <span className="material-symbols-outlined text-primary/20 text-6xl absolute top-4 right-4">format_quote</span>
               <p className="text-gray-300 mb-6 relative z-10 italic">
@@ -343,7 +499,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Testimonial 2 */}
+            {/* Testimonial 2 — Educación */}
             <div className="bg-surface-dark p-8 rounded-2xl border border-white/5 relative">
               <span className="material-symbols-outlined text-primary/20 text-6xl absolute top-4 right-4">format_quote</span>
               <p className="text-gray-300 mb-6 relative z-10 italic">
@@ -364,11 +520,11 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Testimonial 3 */}
+            {/* Testimonial 3 — Marketing */}
             <div className="bg-surface-dark p-8 rounded-2xl border border-white/5 relative">
               <span className="material-symbols-outlined text-primary/20 text-6xl absolute top-4 right-4">format_quote</span>
               <p className="text-gray-300 mb-6 relative z-10 italic">
-                "Increíble claridad para explicar conceptos complejos de IA. Ahora usamos GPT-4 como un verdadero asistente estratégico."
+                "Increíble claridad para explicar conceptos complejos de IA. Ahora usamos GPT-4 como un verdadero asistente estratégico para nuestro contenido."
               </p>
               <div className="flex items-center gap-4">
                 <div
@@ -425,7 +581,7 @@ export default function Home() {
                   <span className="text-primary font-bold text-sm">12 horas / 4 días</span>
                 </div>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  Programa intensivo en vivo, 4 sesiones de 3 horas cada una. Aprenderás a dominar la comunicación con modelos de IA generativa para maximizar resultados en educación y marketing.
+                  Programa intensivo en vivo, 4 sesiones de 3 horas cada una. Aprenderás a dominar la comunicación con modelos de IA generativa para maximizar resultados en marketing y educación.
                 </p>
               </div>
 
@@ -516,7 +672,7 @@ export default function Home() {
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
-                          <span>Automatización de tareas educativas/comerciales con IA</span>
+                          <span>Automatización de tareas de marketing y educativas con IA</span>
                         </li>
                       </ul>
                     </div>
@@ -573,4 +729,3 @@ export default function Home() {
     </div>
   )
 }
-

@@ -8,7 +8,7 @@ export default function Services() {
       <Navbar />
       
       <main className="flex flex-col items-center w-full pt-24">
-        {/* Hero Section */}
+        {/* ===== HERO ===== */}
         <section className="w-full px-4 py-16 md:py-24 max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="flex flex-col gap-6">
@@ -19,13 +19,15 @@ export default function Services() {
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight">
-                IA Generativa que <span className="text-primary">Escala Resultados</span>
+                IA Generativa que{' '}
+                <span className="text-primary">Escala tu Marketing</span>
+                {' '}y tu Educación
               </h1>
               <p className="text-lg text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed">
-                Transformamos la experimentación aislada con IA en sistemas rentables y repetibles que generan resultados tangibles. Ya no se trata de usar ChatGPT ocasionalmente y esperar resultados milagrosos. 
+                Transformamos la experimentación aislada con IA en sistemas rentables y repetibles que generan resultados tangibles. Ya no se trata de usar ChatGPT ocasionalmente y esperar resultados milagrosos.
               </p>
               <p className="text-lg text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed">
-                Nuestros servicios están diseñados para equipos profesionales de Educación y Marketing que buscan escalar su impacto sin aumentar proporcionalmente su carga de trabajo.
+                Nuestros servicios están diseñados para equipos profesionales de <strong>Marketing</strong> y <strong>Educación</strong> que buscan escalar su impacto sin aumentar proporcionalmente su carga de trabajo.
               </p>
               <p className="text-base text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed mt-4">
                 Cada proyecto que desarrollamos está fundamentado en metodologías probadas de Ingeniería de Prompts, diseño de sistemas de contenido y análisis de resultados. No vendemos herramientas ni promesas vacías: construimos procesos que tu equipo puede replicar, medir y optimizar de forma independiente. Desde workshops intensivos que transforman cómo tu equipo interactúa con modelos de IA, hasta implementaciones completas que automatizan flujos críticos de producción, cada solución está diseñada para generar retorno de inversión medible en menos de 6 meses.
@@ -59,13 +61,140 @@ export default function Services() {
             </div>
           </div>
         </section>
-        
-        {/* Service 1 */}
-        <section className="w-full px-4 pt-8 pb-20 max-w-6xl mx-auto" id="service-1">
+
+        {/* ===== SERVICE 1 — MARKETING (primero) ===== */}
+        <section className="w-full px-4 py-20 bg-slate-100 dark:bg-[#111c0e]" id="service-1">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col gap-4 max-w-2xl mb-12">
+              <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 01</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+                IA Generativa para <span className="text-primary">Marketing</span>
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-text-secondary">
+                De contenido genérico a mensajes únicos de marca. Ayudamos a agencias y departamentos de marketing a construir "Cerebros de Marca" — modelos entrenados con tus mejores casos de éxito para que la IA escriba como tu mejor copywriter, no como un robot.
+              </p>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* Main Marketing Service Card */}
+              <div className="bg-white dark:bg-surface-dark rounded-[2rem] border border-gray-200 dark:border-border-dark overflow-hidden shadow-lg">
+                <div className="p-8 md:p-12">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+                      <span className="material-symbols-outlined text-2xl">campaign</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">Brand Brain</h3>
+                      <p className="text-sm text-slate-500 dark:text-text-secondary">Base de conocimiento centralizada</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-4 mb-8">
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Automatización de contenido multicanal</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Emails, posts, guiones, landing pages — todo con tu voz de marca.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Optimización de campañas con IA</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Segmentación, A/B testing y análisis predictivo para maximizar conversión.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Embudos de venta automatizados</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Secuencias de emails y nurturing impulsados por IA que convierten leads.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Análisis de tendencias y competencia</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Monitoreo inteligente de mercado con reportes generados por IA.</p>
+                      </div>
+                    </li>
+                  </ul>
+                  <Link
+                    to="/contacto"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full h-12 px-8 bg-primary text-white font-bold hover:bg-primary-dark transition-colors"
+                  >
+                    Solicitar cotización
+                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  </Link>
+                </div>
+              </div>
+              {/* Mini Case Study: Marketing */}
+              <div className="bg-surface-dark rounded-[2rem] border border-border-dark overflow-hidden shadow-lg relative">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <span className="material-symbols-outlined text-9xl text-white">campaign</span>
+                </div>
+                <div className="p-8 md:p-12 flex flex-col justify-between h-full relative z-10">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 w-fit mb-6">
+                      <span className="text-xs font-bold text-primary uppercase">Caso de Éxito</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-4">
+                      Agencia de Contenido: 10x su producción
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="bg-[#241f1f] border border-red-900/30 rounded-xl p-4">
+                        <div className="flex items-center gap-2 mb-2 text-red-400">
+                          <span className="material-symbols-outlined text-sm">cancel</span>
+                          <span className="text-xs font-bold uppercase">Antes</span>
+                        </div>
+                        <p className="text-gray-400 text-sm italic">
+                          Una persona escribiendo 1 post por hora, sin consistencia de marca ni capacidad de escalar campañas.
+                        </p>
+                      </div>
+                      <div className="flex justify-center -my-2">
+                        <div className="bg-surface-dark rounded-full p-1 border border-border-dark">
+                          <span className="material-symbols-outlined text-primary">keyboard_double_arrow_down</span>
+                        </div>
+                      </div>
+                      <div className="bg-[#1a2c15] border border-primary/30 rounded-xl p-4 shadow-lg shadow-primary/5">
+                        <div className="flex items-center gap-2 mb-2 text-primary">
+                          <span className="material-symbols-outlined text-sm">check_circle</span>
+                          <span className="text-xs font-bold uppercase">Después</span>
+                        </div>
+                        <p className="text-gray-300 text-sm italic">
+                          Sistema de contenido automatizado: 10+ piezas por hora, brand voice consistente, campañas optimizadas por datos. El equipo se enfoca en estrategia, no en redacción mecánica.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-8 pt-6 border-t border-white/10">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="text-3xl font-bold text-primary">10x</p>
+                        <p className="text-xs text-text-secondary">Producción de contenido</p>
+                      </div>
+                      <div className="h-10 w-px bg-border-dark"></div>
+                      <div>
+                        <p className="text-3xl font-bold text-primary">+45%</p>
+                        <p className="text-xs text-text-secondary">Tasa de conversión</p>
+                      </div>
+                      <div className="h-10 w-px bg-border-dark"></div>
+                      <div>
+                        <p className="text-3xl font-bold text-primary">80%</p>
+                        <p className="text-xs text-text-secondary">Menos tiempo operativo</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== SERVICE 2 — FORMACIÓN EN PROMPT ENGINEERING ===== */}
+        <section className="w-full px-4 py-20 max-w-6xl mx-auto" id="service-2">
           <div className="flex flex-col gap-4 mb-10">
-            <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 01</span>
+            <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 02</span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-              Formación en Prompts de Alto Impacto
+              Formación en <span className="text-primary">Prompt Engineering</span> de Alto Impacto
             </h2>
             <p className="text-lg text-slate-600 dark:text-text-secondary max-w-2xl">
               Dejá de obtener respuestas genéricas. Enseñamos a tu equipo a hablar el idioma de los modelos para obtener resultados precisos y alineados a tu marca.
@@ -76,6 +205,9 @@ export default function Services() {
               <div className="p-8 md:p-12 flex flex-col justify-between gap-8 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-border-dark">
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-border-dark text-xs font-bold text-slate-700 dark:text-white">
+                      Equipos de Marketing
+                    </span>
                     <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-border-dark text-xs font-bold text-slate-700 dark:text-white">
                       Equipos Creativos
                     </span>
@@ -132,7 +264,7 @@ export default function Services() {
                         </p>
                       </div>
                     </li>
-                </ul>
+                  </ul>
                 </div>
                 <Link
                   to="/curso"
@@ -142,7 +274,7 @@ export default function Services() {
                   <span className="material-symbols-outlined text-sm">arrow_forward</span>
                 </Link>
               </div>
-              {/* Mini Case Study */}
+              {/* Mini Case Study: Prompt Engineering */}
               <div className="bg-[#111c0e] p-8 md:p-12 relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10">
                   <span className="material-symbols-outlined text-9xl text-white">compare_arrows</span>
@@ -186,14 +318,14 @@ export default function Services() {
             </div>
           </div>
         </section>
-        
-        {/* Service 2 */}
-        <section className="w-full px-4 py-20 bg-slate-100 dark:bg-[#111c0e]" id="service-2">
+
+        {/* ===== SERVICE 3 — EDUCACIÓN ===== */}
+        <section className="w-full px-4 py-20 bg-slate-100 dark:bg-[#111c0e]" id="service-3">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col gap-4 max-w-2xl mb-12">
-              <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 02</span>
+              <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 03</span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-                IA Generativa para Educación
+                IA Generativa para <span className="text-primary">Educación</span>
               </h2>
               <p className="text-lg text-slate-600 dark:text-text-secondary">
                 Transformamos la carga académico-administrativa que genera la docencia universitaria en tiempo de calidad con el alumno. De la experimentación personal a procesos institucionales repetibles.
@@ -206,11 +338,11 @@ export default function Services() {
                   <span className="material-symbols-outlined">menu_book</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
-                  Diseño Curricular Asistido
+                  Diseño Curricular Asistido por IA
                 </h3>
                 <p className="text-slate-600 dark:text-text-secondary mb-6">
                   Su personal académico, una vez capacitado en nuestros talleres, podrá:
-                  <ul className="list-disc ml-6 mt-1">
+                  <ul className="list-disc ml-6 mt-1 space-y-1">
                     <li>Generar rúbricas y criterios de evaluación precisos en minutos.</li>
                     <li>Diseñar programas académicos alineados con objetivos institucionales.</li>
                     <li>Crear materiales de evaluación adaptados al perfil de sus alumnos.</li>
@@ -236,7 +368,7 @@ export default function Services() {
                   </div>
                 </div>
               </div>
-              {/* Visual Card */}
+              {/* Case Study: Education */}
               <div className="relative bg-surface-dark rounded-3xl overflow-hidden min-h-[400px] border border-border-dark group">
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -252,89 +384,18 @@ export default function Services() {
                     <span className="text-xs font-bold text-primary">Caso de Éxito</span>
                   </div>
                   <h3 className="text-2xl font-bold text-white leading-tight">
-                    Implementación en el Bachillerato de la Universidad Autónoma de México
+                    Implementación en el Bachillerato de la UNAM
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    En 2024 y 2025 capacitamos a 40 profesores de la Escuela Nacional Preparatoria y del Colegio de Ciencias y Humanidades 
-                    por medio de un curso llamado «Uso de la Inteligencia Artificial Generativa en la Enseñanza de la Química», 
-                    con resultados óptimos.
+                    En 2024 y 2025 capacitamos a 40 profesores de la Escuela Nacional Preparatoria y del Colegio de Ciencias y Humanidades por medio de un curso llamado «Uso de la Inteligencia Artificial Generativa en la Enseñanza de la Química», con resultados óptimos.
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        
-        {/* Service 3 */}
-        <section className="w-full px-4 py-20 max-w-6xl mx-auto" id="service-3">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-5 order-2 lg:order-1">
-              <div className="relative rounded-[2.5rem] overflow-hidden border border-border-dark shadow-2xl">
-                <div className="absolute top-4 left-4 z-10 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
-                  <p className="text-xs font-bold text-white flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-red-500"></span> Live Preview
-                  </p>
-                </div>
-                <img
-                  className="w-full h-auto object-cover opacity-80"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuVkRB4fVZ7lr3o1NU35ycR-RitlCcO0qK_AzcDLP4BpSkVNc15a8PDNrNQxNSfL2WIZm8tVpmtpFYKNHifGSEkO3ytni5-OH7QKNrNOsXcouymW2Tgoge2UlxYb7LDf2_kg1AmToQTSn1pa2GYJCrivL_F8VbJbhx9sB4IaXoW0G3YrA4w1jnNGn7lfzHVKAOsd1EprjCKh9mvAKkOEuHwVtJBI0i51--vQqOk3b36HInEckGvTBy7oGSfcl0lgUa3b98wtmuIRnz"
-                  alt="Marketing team analyzing data"
-                />
-                {/* Overlay UI Element */}
-                <div className="absolute bottom-6 left-6 right-6 bg-surface-dark/90 backdrop-blur-xl p-5 rounded-2xl border border-border-dark">
-                  <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-2">
-                    <span className="text-xs font-bold text-text-secondary uppercase">Brand Voice Analysis</span>
-                    <span className="material-symbols-outlined text-primary text-sm">auto_awesome</span>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden">
-                        <div className="bg-gray-500 h-full w-[40%]"></div>
-                      </div>
-                      <span className="text-[10px] text-gray-400 w-16 text-right">Generic GPT</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden">
-                        <div className="bg-primary h-full w-[95%] shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
-                      </div>
-                      <span className="text-[10px] text-primary w-16 text-right font-bold">Tuned Model</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="lg:col-span-7 flex flex-col gap-6 order-1 lg:order-2">
-              <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 03</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-                IA Generativa para Marketing
-              </h2>
-              <h3 className="text-xl font-medium text-slate-700 dark:text-gray-300">
-                De contenido genérico a mensajes únicos de marca.
-              </h3>
-              <p className="text-slate-600 dark:text-text-secondary leading-relaxed">
-                Ayudamos a agencias y departamentos de marketing a construir "Cerebros de Marca". Entrenamos modelos con tus mejores casos de éxito para que la IA escriba como tu mejor copywriter, no como un robot.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-4 mt-4">
-                <div className="flex gap-3 p-4 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark">
-                  <span className="material-symbols-outlined text-primary">psychology</span>
-                  <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-sm">Brand Brain</h4>
-                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-1">Base de conocimiento centralizada.</p>
-                  </div>
-                </div>
-                <div className="flex gap-3 p-4 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark">
-                  <span className="material-symbols-outlined text-primary">bolt</span>
-                  <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-sm">Content Scale</h4>
-                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-1">Multiplica x10 tu output de calidad.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Final CTA Section */}
+
+        {/* ===== CTA FINAL ===== */}
         <section className="w-full px-4 py-24 bg-background-light dark:bg-background-dark">
           <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-8">
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
@@ -351,4 +412,3 @@ export default function Services() {
     </div>
   )
 }
-
