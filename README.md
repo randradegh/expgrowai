@@ -1,8 +1,7 @@
 # Exponential Grow AI - Sitio Web
 
-Sitio web profesional para consultoría en IA Generativa, desarrollado con React, TypeScript, Tailwind CSS y Vite.
+Sitio web profesional para consultoría en IA Generativa, con enfoque en Marketing Digital y Educación. Desarrollado con React, TypeScript, Tailwind CSS y Vite.
 
-## Versión de Junio de 2026.
 ## 🚀 Características
 
 - **React 18** con TypeScript
@@ -11,11 +10,12 @@ Sitio web profesional para consultoría en IA Generativa, desarrollado con React
 - **React Router** para navegación
 - **Material Symbols** para iconos
 - **Diseño responsive** y optimizado para móviles
-- **Modo oscuro** con paleta de colores indigo
+- **Modo oscuro** con paleta indigo / slate oscuro
+- **Dos heroes**: Marketing Digital primero, Educación después
 
 ## 📋 Requisitos Previos
 
-- Node.js 18+ 
+- Node.js 18+
 - npm o yarn
 
 ## 🛠️ Instalación
@@ -39,20 +39,24 @@ npm run dev
 ```
 expgrowai/
 ├── src/
-│   ├── components/      # Componentes reutilizables
+│   ├── components/          # Componentes reutilizables
 │   │   ├── Navbar.tsx
-│   │   └── Footer.tsx
-│   ├── pages/          # Páginas principales
-│   │   ├── Home.tsx
+│   │   ├── Footer.tsx
+│   │   ├── ContactModal.tsx
+│   │   └── InscripcionModal.tsx
+│   ├── pages/               # Páginas principales
+│   │   ├── Home.tsx          # Landing page (dos heroes)
 │   │   ├── About.tsx
-│   │   ├── Services.tsx
+│   │   ├── Services.tsx      # Marketing → Prompt Eng → Educación
+│   │   ├── Curso.tsx
 │   │   └── Blog.tsx
-│   ├── lib/            # Utilidades
+│   ├── lib/                  # Utilidades
 │   │   └── utils.ts
-│   ├── App.tsx         # Componente principal
-│   ├── main.tsx        # Punto de entrada
-│   └── index.css       # Estilos globales
-├── public/             # Archivos estáticos
+│   ├── App.tsx               # Router principal
+│   ├── main.tsx              # Punto de entrada
+│   └── index.css             # Estilos globales (Tailwind + Manrope)
+├── public/                   # Archivos estáticos
+│   └── images/
 ├── index.html
 ├── package.json
 ├── tailwind.config.js
@@ -65,15 +69,24 @@ expgrowai/
 
 Los colores principales están definidos en `tailwind.config.js`:
 
-- **Primary**: Indigo (#6366f1) - Color principal para modo oscuro
+- **Primary**: Indigo (#6366f1)
 - **Background Dark**: Slate oscuro (#0f172a)
 - **Surface Dark**: Slate medio (#1e293b)
+- **Border Dark**: Slate tenue (#334155)
 
-### Autor
+### Tipografía
 
-El nombre del autor está configurado como **Roberto Andrade F.** y aparece en:
-- Footer
-- Página de Blog (sidebar)
+- **Manrope** (variable): importada via Google Fonts para titulares y cuerpo
+
+## 📝 Páginas
+
+| Ruta | Página | Descripción |
+|------|--------|-------------|
+| `/` | Home | Landing page con dos heroes: Marketing Digital + Educación. Secciones: Problemas, Audiencia, Servicios Destacados, Testimonios |
+| `/servicios` | Services | Servicios detallados: Marketing → Prompt Engineering → Educación, cada uno con mini casos de éxito |
+| `/curso` | Curso | Información del taller intensivo de Prompt Engineering (4 días / 12 horas) |
+| `/sobre-mi` | About | Biografía y trayectoria profesional |
+| `/recursos` | Blog | Artículos y recursos sobre IA Generativa |
 
 ## 📝 Scripts Disponibles
 
@@ -94,5 +107,8 @@ Los archivos optimizados se generarán en la carpeta `dist/`.
 
 ## 📄 Licencia
 
-© 2024 Exponential Grow AI - Roberto Andrade F. Todos los derechos reservados.
+© 2026 Exponential Grow AI - Roberto Andrade F. Todos los derechos reservados.
 
+## Versión
+
+Junio de 2026.
