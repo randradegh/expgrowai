@@ -1,4 +1,5 @@
 {
+  "framework": null,
   "rewrites": [
     {
       "source": "/api/hashnode",
@@ -14,4 +15,3 @@
     }
   ]
 }
-
