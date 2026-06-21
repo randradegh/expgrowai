@@ -5,6 +5,7 @@ import About from './pages/About'
 import Services from './pages/Services'
 // import Curso from './pages/Curso'  // ocultado temporalmente
 import Blog from './pages/Blog'
+import Privacy from './pages/Privacy'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/servicios" element={<Services />} />
           {/* Ruta /curso oculta temporalmente */}
           <Route path="/recursos" element={<Blog />} />
+          <Route path="/aviso-de-privacidad" element={<Privacy />} />
         </Routes>
       </Router>
     </HelmetProvider>

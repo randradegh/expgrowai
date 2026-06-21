@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import ContactModal from './ContactModal'
 
 export default function Footer() {
@@ -51,8 +52,16 @@ export default function Footer() {
       </div>
       
       <div className="absolute bottom-6 w-full text-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-2">
+          <Link
+            to="/aviso-de-privacidad"
+            className="text-gray-500 hover:text-primary text-xs transition-colors"
+          >
+            Aviso de Privacidad
+          </Link>
+        </div>
         <p className="text-gray-600 text-xs">
-          © 2024 Exponential Grow AI - Roberto Andrade F. Todos los derechos reservados.
+          © 2026 Exponential Grow AI - Roberto Andrade F. Todos los derechos reservados.
         </p>
       </div>
     </footer>
