@@ -96,9 +96,9 @@ export default function SEO({
       <meta name="twitter:image" content={ogImage} />
 
       {/* JSON-LD Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(organizationSchema, null, 2)}
-      </script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify(organizationSchema)
+      }} />
     </Helmet>
   )
 }
