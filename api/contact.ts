@@ -59,7 +59,7 @@ export default async function handler(req: any, res: any) {
 
     // Email desde el cual se envía (puede ser onboarding@resend.dev para pruebas)
     // O usar un dominio verificado: 'Contacto <noreply@tudominio.com>'
-    let fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+    let fromEmail = process.env.RESEND_FROM_EMAIL || 'contacto@expgrowai.mx'
     
     // Validar que no sea un dominio de Gmail (no se puede verificar)
     if (fromEmail.includes('@gmail.com') || fromEmail.includes('@googlemail.com')) {
