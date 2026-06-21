@@ -202,29 +202,23 @@ export default function Home() {
                 </div>
                 <div className="flex gap-4 p-5 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all">
                   <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
-                    <span className="material-symbols-outlined">assignment_turned_in</span>
+                    <span className="material-symbols-outlined">smart_toy</span>
                   </div>
                   <div>
-                    <h4 className="text-white font-bold text-sm">Certificación Práctica</h4>
-                    <p className="text-gray-400 text-xs mt-1">Evalúa y certifica las habilidades de tu equipo en IA Generativa.</p>
+                    <h4 className="text-white font-bold text-sm">Creación de Agentes de Hermes</h4>
+                    <p className="text-gray-400 text-xs mt-1">Automatiza procesos con agentes autónomos basados en Hermes Agent — integra herramientas, APIs y modelos para escalar tu negocio.</p>
                   </div>
                 </div>
               </div>
               
               <div className="flex flex-wrap items-center gap-4 mt-4">
-                <button
-                  type="button"
-                  onClick={() => setIsTemarioModalOpen(true)}
-                  className="px-6 py-3 rounded-full bg-primary hover:bg-primary-dark text-white font-bold transition-all shadow-lg shadow-primary/20"
-                >
-                  Ver temario completo
-                </button>
-                <Link
+                {/* Link a /curso ocultado temporalmente */}
+                {/* <Link
                   to="/curso"
                   className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-all"
                 >
                   Más información
-                </Link>
+                </Link> */}
               </div>
             </div>
             
@@ -459,12 +453,13 @@ export default function Home() {
                   Aprende a comunicarte efectivamente con los LLMs (GPT-4, Claude, Gemini, Perplexity). Desde técnicas básicas de zero-shot hasta cadenas de pensamiento complejas para transformar tu trabajo.
                 </p>
                 <div className="mt-auto">
-                  <Link
+                  {/* Link a /curso ocultado temporalmente */}
+                  {/* <Link
                     to="/curso"
                     className="inline-flex px-6 py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all"
                   >
                     Ver el programa
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>

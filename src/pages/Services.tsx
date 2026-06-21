@@ -266,13 +266,14 @@ export default function Services() {
                     </li>
                   </ul>
                 </div>
-                <Link
+                {/* Link a /curso ocultado temporalmente */}
+                {/* <Link
                   to="/curso"
                   className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full h-12 px-8 bg-primary text-white font-bold hover:bg-primary-dark transition-colors mt-4"
                 >
                   Ver temario del workshop
                   <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </Link>
+                </Link> */}
               </div>
               {/* Mini Case Study: Prompt Engineering */}
               <div className="bg-[#111c0e] p-8 md:p-12 relative overflow-hidden">
@@ -389,6 +390,107 @@ export default function Services() {
                   <p className="text-gray-300 text-sm">
                     En 2024 y 2025 capacitamos a 40 profesores de la Escuela Nacional Preparatoria y del Colegio de Ciencias y Humanidades por medio de un curso llamado «Uso de la Inteligencia Artificial Generativa en la Enseñanza de la Química», con resultados óptimos.
                   </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== SERVICE 4 — SEO CON AGENTES DE IA ===== */}
+        <section className="w-full px-4 py-20 max-w-6xl mx-auto" id="service-4">
+          <div className="flex flex-col gap-4 mb-10">
+            <span className="text-primary font-bold tracking-wider text-sm uppercase">Servicio 04</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+              Auditoría <span className="text-primary">SEO</span> con Agentes de IA
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-text-secondary max-w-2xl">
+              Un agente de IA especializado analiza tu sitio web en profundidad y entrega un diagnóstico SEO completo con recomendaciones accionables — sin necesidad de herramientas costosas ni consultores externos.
+            </p>
+          </div>
+          <div className="bg-white dark:bg-surface-dark rounded-[2rem] border border-gray-200 dark:border-border-dark overflow-hidden shadow-lg">
+            <div className="grid lg:grid-cols-2">
+              <div className="p-8 md:p-12 flex flex-col justify-between gap-8 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-border-dark">
+                <div className="flex flex-col gap-6">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+                      <span className="material-symbols-outlined text-2xl">travel_explore</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">Agente Analizador SEO</h3>
+                      <p className="text-sm text-slate-500 dark:text-text-secondary">Escaneo inteligente de tu sitio</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Estructura Técnica</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Meta tags, headings, jerarquía de contenido, datos estructurados y rendimiento de carga.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Análisis On-Page</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Optimización de palabras clave, densidad, enlazado interno y calidad del contenido página por página.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Índices y Crawlability</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Detección de errores de rastreo, páginas huérfanas, redirecciones rotas y problemas de indexación.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Recomendaciones Priorizadas</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Informe ejecutivo con acciones ordenadas por impacto: lo urgente, lo importante y lo estratégico.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Seguimiento y Evolución</p>
+                        <p className="text-sm text-slate-600 dark:text-text-secondary">Ejecuta el agente periódicamente para monitorear cambios y medir la mejora de tu SEO en el tiempo.</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {/* Mini Case Study: SEO */}
+              <div className="bg-[#0e171c] p-8 md:p-12 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <span className="material-symbols-outlined text-9xl text-white">travel_explore</span>
+                </div>
+                <h3 className="text-white text-lg font-bold mb-6 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-primary"></span> Cómo funciona
+                </h3>
+                <div className="space-y-4 relative z-10">
+                  <div className="bg-[#1a1a24] border border-primary/30 rounded-xl p-4">
+                    <div className="flex items-center gap-2 mb-2 text-primary">
+                      <span className="material-symbols-outlined text-sm">robot_2</span>
+                      <span className="text-xs font-bold uppercase">El Agente SEO</span>
+                    </div>
+                    <p className="text-gray-300 text-sm italic">
+                      "Soy un agente especializado en auditoría SEO. Recibo la URL de un sitio web y realizo un análisis exhaustivo: reviso la estructura HTML, los meta tags, la jerarquía de contenido, los tiempos de carga, el archivo robots.txt, el sitemap XML, los datos estructurados y el enlazado interno. Entrego un reporte detallado con hallazgos, prioridades y pasos concretos para mejorar el posicionamiento orgánico."
+                    </p>
+                  </div>
+                  <div className="flex justify-center -my-2 relative z-20">
+                    <div className="bg-surface-dark rounded-full p-1 border border-border-dark">
+                      <span className="material-symbols-outlined text-primary">keyboard_double_arrow_down</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#1a2c15] border border-primary/30 rounded-xl p-4 shadow-lg shadow-primary/5">
+                    <div className="flex items-center gap-2 mb-2 text-primary">
+                      <span className="material-symbols-outlined text-sm">description</span>
+                      <span className="text-xs font-bold uppercase">Reporte Entregable</span>
+                    </div>
+                    <p className="text-gray-300 text-sm italic">
+                      Diagnóstico SEO completo en formato ejecutivo: puntuación general, secciones evaluadas, problemas detectados con su nivel de criticidad, recomendaciones paso a paso y un checklist de implementación. Todo en un documento listo para compartir con tu equipo técnico o de marketing.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
