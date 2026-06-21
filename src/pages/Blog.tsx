@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SEO from '../components/SEO'
 import { useHashnodePosts } from '../hooks/useHashnodePosts'
 
 // Configuración: Reemplaza con tu username de Hashnode
@@ -64,6 +65,11 @@ export default function Blog() {
 
   return (
     <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden antialiased selection:bg-primary selection:text-black">
+      <SEO
+        title="Blog y Recursos de IA Generativa y Marketing Digital | Exponential Grow AI"
+        description="Artículos, guías y recursos sobre IA generativa, prompt engineering, Brand Brains y automatización de marketing. Contenido práctico para equipos que quieren escalar con IA."
+        canonicalPath="/recursos"
+      />
       <div className="relative flex min-h-screen flex-col">
         <Navbar />
         

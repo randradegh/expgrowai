@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ContactModal from '../components/ContactModal'
+import SEO from '../components/SEO'
 
 export default function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
@@ -10,6 +11,11 @@ export default function Home() {
 
   return (
     <div className="bg-background-light dark:bg-background-dark text-[#152211] dark:text-white overflow-x-hidden w-full">
+      <SEO
+        title="Exponential Grow AI — Consultoría IA Generativa para Marketing y Educación"
+        description="Consultoría de IA generativa para marketing y educación en México. Automatiza contenido con Brand Brains, capacita a tu equipo en prompt engineering y escala resultados medibles."
+        canonicalPath="/"
+      />
       <Navbar />
       
       {/* ===== HERO — MARKETING DIGITAL ===== */}

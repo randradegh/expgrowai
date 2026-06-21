@@ -1,9 +1,15 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SEO from '../components/SEO'
 
 export default function About() {
   return (
     <div className="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden">
+      <SEO
+        title="Sobre mí — Roberto Andrade, Consultor IA Generativa y Prompt Engineering | Exponential Grow AI"
+        description="Roberto Andrade, fundador de Exponential Grow AI. Consultor en IA generativa, prompt engineering y marketing digital. Creador de la metodología Arquitectura del Pensamiento + IA."
+        canonicalPath="/sobre-mi"
+      />
       <div className="relative flex h-auto min-h-screen w-full flex-col">
         <Navbar />
         

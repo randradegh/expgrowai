@@ -1,9 +1,15 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SEO from '../components/SEO'
 
 export default function Services() {
   return (
     <div className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+      <SEO
+        title="Servicios de IA Generativa — Brand Brains, Prompt Engineering y Automatización | Exponential Grow AI"
+        description="Servicios de consultoría IA: Brand Brains para contenido con voz de marca, capacitación en prompt engineering para equipos, y automatización de marketing con IA generativa."
+        canonicalPath="/servicios"
+      />
       <Navbar />
       
       <main className="flex flex-col items-center w-full pt-24">
