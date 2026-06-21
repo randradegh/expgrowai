@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -117,13 +116,6 @@ export default function Services() {
                       </div>
                     </li>
                   </ul>
-                  <Link
-                    to="/contacto"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full h-12 px-8 bg-primary text-white font-bold hover:bg-primary-dark transition-colors"
-                  >
-                    Solicitar cotización
-                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                  </Link>
                 </div>
               </div>
               {/* Mini Case Study: Marketing */}

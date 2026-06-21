@@ -316,13 +316,6 @@ export default function About() {
                 Agenda una sesión estratégica de 15 minutos para evaluar cómo podemos integrar IA generativa en tu educación o marketing.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full justify-center">
-                <button className="flex items-center justify-center gap-2 rounded-lg h-14 px-8 bg-primary text-white text-lg font-bold leading-normal hover:bg-primary-dark hover:scale-105 transition-all duration-300 w-full sm:w-auto shadow-[0_0_20px_rgba(99,102,241,0.4)]">
-                  <span className="material-symbols-outlined">calendar_month</span>
-                  Reservar Sesión
-                </button>
-                <button className="flex items-center justify-center gap-2 rounded-lg h-14 px-8 bg-surface-dark border border-border-dark text-white text-lg font-bold leading-normal hover:bg-border-dark transition-colors w-full sm:w-auto">
-                  Ver Casos de Éxito
-                </button>
               </div>
             </div>
           </div>

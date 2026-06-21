@@ -62,9 +62,6 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <button className="hidden md:flex bg-primary hover:bg-primary-dark text-white text-sm font-bold px-6 h-10 items-center rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_0_25px_rgba(99,102,241,0.5)]">
-            Agendar sesión
-          </button>
           <button className="md:hidden text-white">
             <span className="material-symbols-outlined">menu</span>
           </button>

@@ -91,13 +91,6 @@ export default function Home() {
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
-                <button
-                  type="button"
-                  onClick={() => setIsContactModalOpen(true)}
-                  className="px-6 py-3 rounded-full bg-primary hover:bg-primary-dark text-white font-bold transition-all shadow-lg shadow-primary/20"
-                >
-                  Agenda una cita gratuita
-                </button>
                 <Link
                   to="/servicios"
                   className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-all"
@@ -423,13 +416,6 @@ export default function Home() {
                   No solo prompts sueltos. Construimos flujos de trabajo completos que integran IA en tu Sistema de Gestión de Contenidos, automatizando la investigación, redacción y distribución para tu marketing digital.
                 </p>
                 <div className="mt-auto">
-                  <button
-                    type="button"
-                    onClick={() => setIsContactModalOpen(true)}
-                    className="px-6 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-background-dark transition-all block w-full text-center"
-                  >
-                    Agenda una cita
-                  </button>
                 </div>
               </div>
             </div>
