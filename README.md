@@ -2,16 +2,18 @@
 
 Sitio web profesional para consultoría en IA Generativa, con enfoque en Marketing Digital y Educación. Desarrollado con React, TypeScript, Tailwind CSS y Vite.
 
+Desplegado en **Vercel** con dominio `expgrowai.mx`.
+
 ## 🚀 Características
 
 - **React 18** con TypeScript
 - **Tailwind CSS** para estilos
 - **Vite** como bundler
-- **React Router** para navegación
+- **React Router** para navegación (SPA con rewrites para Vercel)
 - **Material Symbols** para iconos
 - **Diseño responsive** y optimizado para móviles
 - **Modo oscuro** con paleta indigo / slate oscuro
-- **Dos heroes**: Marketing Digital primero, Educación después
+- **Formulario de contacto** vía API serverless + Resend (dominio `expgrowai.mx` verificado)
 
 ## 📋 Requisitos Previos
 
@@ -34,34 +36,74 @@ npm run dev
 
 3. Abre tu navegador en `http://localhost:5173`
 
+> Nota: las rutas `/api/*` son funciones serverless de Vercel y no funcionan localmente con `npm run dev`.
+
 ## 📁 Estructura del Proyecto
 
 ```
 expgrowai/
+├── api/                     # Funciones serverless (Vercel)
+│   ├── contact.ts           # POST → envía email vía Resend
+│   └── hashnode.ts          # Proxy para blog Hashnode
+├── public/
+│   ├── images/
+│   ├── _redirects           # Fallback SPA routing
+│   └── robots.txt
 ├── src/
-│   ├── components/          # Componentes reutilizables
+│   ├── components/
 │   │   ├── Navbar.tsx
 │   │   ├── Footer.tsx
 │   │   ├── ContactModal.tsx
 │   │   └── InscripcionModal.tsx
-│   ├── pages/               # Páginas principales
-│   │   ├── Home.tsx          # Landing page (dos heroes)
+│   ├── pages/
+│   │   ├── Home.tsx         # Landing page
 │   │   ├── About.tsx
-│   │   ├── Services.tsx      # Marketing → Prompt Eng → Educación
-│   │   ├── Curso.tsx
+│   │   ├── Services.tsx     # 4 servicios
+│   │   ├── Curso.tsx        # Código intacto, ruta oculta
 │   │   └── Blog.tsx
-│   ├── lib/                  # Utilidades
+│   ├── lib/
 │   │   └── utils.ts
-│   ├── App.tsx               # Router principal
-│   ├── main.tsx              # Punto de entrada
-│   └── index.css             # Estilos globales (Tailwind + Manrope)
-├── public/                   # Archivos estáticos
-│   └── images/
-├── index.html
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── vercel.json              # Rewrites para SPA + API
 ├── package.json
 ├── tailwind.config.js
 └── vite.config.ts
 ```
+
+## 📝 Páginas
+
+| Ruta | Página | Descripción |
+|------|--------|-------------|
+| `/` | Home | Landing page con dos heroes. Secciones: Problemas, Audiencia, Servicios Destacados (incluye "Creación de Agentes de Hermes"), Testimonios |
+| `/servicios` | Services | 4 servicios detallados: Marketing → Prompt Engineering → Educación → Auditoría SEO con Agentes de IA. Cada uno con mini casos de éxito |
+| `/sobre-mi` | About | Biografía y trayectoria profesional |
+| `/recursos` | Blog | Artículos y recursos sobre IA Generativa |
+| ~~`/curso`~~ | Curso | Ruta oculta temporalmente (código intacto) |
+
+## 🧩 Servicios
+
+1. **IA Generativa para Marketing** — Brand Brain, automatización de contenido, embudos de venta
+2. **Formación en Prompt Engineering** — Workshops, capacitación in-company, metodología probada
+3. **IA Generativa para Educación** — Diseño curricular asistido, reducción de carga administrativa
+4. **Auditoría SEO con Agentes de IA** — Análisis técnico, on-page, crawlability e informes ejecutivos
+
+## 📬 Formulario de Contacto
+
+El modal de contacto envía un POST a `/api/contact` (serverless function en Vercel) que utiliza **Resend** para entregar el mensaje a `randradedev@gmail.com`.
+
+- From: `Exponential Grow AI <contacto@expgrowai.mx>`
+- Reply-To: email del visitante
+- Dominio `expgrowai.mx` verificado en Resend
+
+Variables de entorno requeridas en Vercel:
+
+| Variable | Descripción |
+|----------|-------------|
+| `RESEND_API_KEY` | API key de Resend |
+| `CONTACT_EMAIL` | Destinatario (por defecto randradedev@gmail.com) |
+| `RESEND_FROM_EMAIL` | Remitente (por defecto contacto@expgrowai.mx) |
 
 ## 🎨 Personalización
 
@@ -78,16 +120,6 @@ Los colores principales están definidos en `tailwind.config.js`:
 
 - **Manrope** (variable): importada via Google Fonts para titulares y cuerpo
 
-## 📝 Páginas
-
-| Ruta | Página | Descripción |
-|------|--------|-------------|
-| `/` | Home | Landing page con dos heroes: Marketing Digital + Educación. Secciones: Problemas, Audiencia, Servicios Destacados, Testimonios |
-| `/servicios` | Services | Servicios detallados: Marketing → Prompt Engineering → Educación, cada uno con mini casos de éxito |
-| `/curso` | Curso | Información del taller intensivo de Prompt Engineering (4 días / 12 horas) |
-| `/sobre-mi` | About | Biografía y trayectoria profesional |
-| `/recursos` | Blog | Artículos y recursos sobre IA Generativa |
-
 ## 📝 Scripts Disponibles
 
 - `npm run dev` - Inicia el servidor de desarrollo
@@ -97,7 +129,7 @@ Los colores principales están definidos en `tailwind.config.js`:
 
 ## 🚀 Despliegue
 
-Para construir la aplicación para producción:
+Desplegado en Vercel con `framework: null` y rewrites para SPA routing.
 
 ```bash
 npm run build
@@ -108,7 +140,3 @@ Los archivos optimizados se generarán en la carpeta `dist/`.
 ## 📄 Licencia
 
 © 2026 Exponential Grow AI - Roberto Andrade F. Todos los derechos reservados.
-
-## Versión
-
-Junio de 2026.
