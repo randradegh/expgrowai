@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+import { useEffect } from 'react'
 
 interface SEOProps {
   title: string
@@ -72,6 +73,21 @@ export default function SEO({
 }: SEOProps) {
   const canonicalUrl = `${SITE_URL}${canonicalPath}`
 
+  // Inject JSON-LD structured data directly (Helmet doesn't support script tags)
+  useEffect(() => {
+    const scriptId = 'json-ld-structured-data'
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null
+
+    if (!script) {
+      script = document.createElement('script')
+      script.id = scriptId
+      script.type = 'application/ld+json'
+      document.head.appendChild(script)
+    }
+
+    script.textContent = JSON.stringify(organizationSchema)
+  }, [])
+
   return (
     <Helmet>
       {/* Primary Meta Tags */}
@@ -94,11 +110,6 @@ export default function SEO({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
-
-      {/* JSON-LD Structured Data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify(organizationSchema)
-      }} />
     </Helmet>
   )
 }
