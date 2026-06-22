@@ -10,7 +10,7 @@ interface SEOProps {
 }
 
 const SITE_URL = 'https://www.expgrowai.mx'
-const DEFAULT_OG_IMAGE = `${SITE_URL}/expgrowai_logo_01.png`
+const DEFAULT_OG_IMAGE = `${SITE_URL}/imagotipo_expgrowai_01_transparente.png`
 
 const organizationSchema = {
   '@context': 'https://schema.org',

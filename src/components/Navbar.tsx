@@ -10,9 +10,9 @@ export default function Navbar() {
       <div className="max-w-[1280px] mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <img 
-            src="/expgrowai_logo_01.png" 
-            alt="Exponential Grow AI Logo" 
-            className="h-10 w-auto"
+            src="/imagotipo_expgrowai_01_transparente.png" 
+            alt="Exponential Grow AI" 
+            className="h-12 w-auto"
           />
           <h2 className="text-white text-xl font-bold tracking-tight">
             Exponential <span className="text-primary">Grow AI</span>
