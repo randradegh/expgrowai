@@ -35,15 +35,14 @@ export default function Navbar() {
           >
             Servicios
           </Link>
-          {/* Link a /curso ocultado temporalmente */}
-          {/* <Link
-            to="/curso"
+          <Link
+            to="/curso-profesionistas"
             className={`text-sm font-medium transition-colors ${
-              isActive('/curso') ? 'text-white' : 'text-gray-300 hover:text-white'
+              isActive('/curso-profesionistas') ? 'text-white' : 'text-gray-300 hover:text-white'
             }`}
           >
-            Curso Peticiones
-          </Link> */}
+            Curso IA
+          </Link>
           <Link
             to="/sobre-mi"
             className={`text-sm font-medium transition-colors ${

@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
 // import Curso from './pages/Curso'  // ocultado temporalmente
+import CursoProfesionistas from './pages/CursoProfesionistas'
 import Blog from './pages/Blog'
 import Privacy from './pages/Privacy'
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/sobre-mi" element={<About />} />
           <Route path="/servicios" element={<Services />} />
           {/* Ruta /curso oculta temporalmente */}
+          <Route path="/curso-profesionistas" element={<CursoProfesionistas />} />
           <Route path="/recursos" element={<Blog />} />
           <Route path="/aviso-de-privacidad" element={<Privacy />} />
         </Routes>
