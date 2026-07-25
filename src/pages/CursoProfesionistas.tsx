@@ -32,7 +32,7 @@ const MODULOS = [
       'Aplicaciones concretas por área: redacción y mejora de correos, reportes y actas con Gemini.',
       'Análisis de documentos extensos y generación de resúmenes con NotebookLM.',
       'Diseño de presentaciones e imágenes con Canva AI.',
-      'Transcripción automática de reuniones con Google Meet. Demo en vivo: del problema al entregable en menos de 5 minutos.',
+      'Demo en vivo: del problema al entregable en menos de 5 minutos.',
     ],
   },
   {
@@ -52,7 +52,7 @@ const MODULOS = [
       'Qué es la IA agéntica y hacia dónde vamos.',
       'Impacto específico por área profesional: diseño, administración y ventas.',
       'Cómo seguir aprendiendo en un campo que cambia cada 6 meses.',
-      'Taller de cierre: canvas personal de adopción de IA + compromisos para los próximos 30 días.',
+      'Taller de cierre: Proyecto personal de adopción de IA + compromisos para los próximos 30 días.',
     ],
   },
 ]
@@ -64,7 +64,7 @@ const HERRAMIENTAS = [
   { nombre: 'Canva AI', uso: 'Diseño, presentaciones e imágenes' },
   { nombre: 'Arena AI', uso: 'Comparar modelos de IA en un solo lugar' },
   { nombre: 'Perplexity AI', uso: 'Búsqueda con fuentes verificadas' },
-  { nombre: 'Google Meet', uso: 'Transcripción automática de reuniones' },
+  { nombre: 'Google Meet', uso: 'Demo en vivo de transcripción de reuniones' },
 ]
 
 const DETALLES_EDICION: [string, string][] = [
@@ -284,9 +284,6 @@ export default function CursoProfesionistas() {
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-2">
             Herramientas que usaremos
           </h2>
-          <p className="text-center text-slate-400 mb-10">
-            Todas gratuitas, sin necesidad de tarjeta de crédito
-          </p>
           <div className="overflow-hidden rounded-2xl border border-border-dark">
             <table className="w-full text-left">
               <thead>

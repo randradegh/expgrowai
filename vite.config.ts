@@ -5,12 +5,15 @@ import { contactPlugin } from './vite-plugin-contact'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), contactPlugin()],
+  appType: 'spa',
   resolve: {
     alias: {
       '@': '/src',
     },
   },
   server: {
+    port: 5173,
+    host: '0.0.0.0',
     proxy: {
       '/api/hashnode': {
         target: 'https://gql.hashnode.com',
@@ -30,6 +33,10 @@ export default defineConfig({
         },
       },
     },
+  },
+  preview: {
+    port: 8080,
+    host: '0.0.0.0',
   },
 })
 

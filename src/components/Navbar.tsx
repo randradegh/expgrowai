@@ -11,11 +11,11 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-3">
           <img 
             src="/imagotipo_expgrowai_01_transparente.png" 
-            alt="Exponential Grow AI" 
+            alt="{Exponential Grow AI}" 
             className="h-12 w-auto"
           />
           <h2 className="text-white text-xl font-bold tracking-tight">
-            Exponential <span className="text-primary">Grow AI</span>
+            {'{Exponential '}<span className="text-primary">{'Grow AI}'}</span>
           </h2>
         </Link>
         <div className="hidden md:flex items-center gap-8">
