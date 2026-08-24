@@ -56,6 +56,23 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
   const handleWhatsApp = () => {
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage())}`
     window.open(url, '_blank', 'noopener,noreferrer')
+    // El registro por WhatsApp también deja copia por email (misma ruta que el
+    // botón de email): el endpoint /api/contact entrega a randrade@expgrowai.mx.
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: [
+          buildMessage(),
+          '',
+          '(Registrado desde la página de la master class — vía WhatsApp)',
+        ].join('\n'),
+      }),
+    }).catch(() => {
+      // No bloquear el flujo: si el email falla, el usuario sigue por WhatsApp.
+    })
     setStep('whatsapp')
   }
 
