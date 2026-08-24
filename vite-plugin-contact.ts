@@ -78,7 +78,7 @@ function handleContactRequest(req: IncomingMessage, res: ServerResponse) {
           
           console.log('📧 Configuración de email (desarrollo):', {
             hasApiKey: !!resendApiKey,
-            toEmail: process.env.CONTACT_EMAIL || 'randradedev@gmail.com',
+            toEmail: process.env.CONTACT_EMAIL || 'randrade@expgrowai.mx',
             fromEmail: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
           })
           
@@ -87,7 +87,7 @@ function handleContactRequest(req: IncomingMessage, res: ServerResponse) {
               // Importar Resend dinámicamente
               const { Resend } = await import('resend')
               const resend = new Resend(resendApiKey)
-              const toEmail = process.env.CONTACT_EMAIL || 'randradedev@gmail.com'
+              const toEmail = process.env.CONTACT_EMAIL || 'randrade@expgrowai.mx'
               const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
 
               const { data, error } = await resend.emails.send({

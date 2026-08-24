@@ -43,8 +43,8 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3 text-white">
               <span className="material-symbols-outlined text-primary">mail</span>
-              <a href="mailto:randradedev@gmail.com" className="text-sm font-medium hover:text-primary transition-colors">
-                randradedev@gmail.com
+              <a href="mailto:randrade@expgrowai.mx" className="text-sm font-medium hover:text-primary transition-colors">
+                randrade@expgrowai.mx
               </a>
             </div>
           </div>

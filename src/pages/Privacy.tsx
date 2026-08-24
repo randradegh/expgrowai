@@ -46,7 +46,7 @@ export default function Privacy() {
                       Personales en Posesión de los Particulares</strong> (LFPDPPP) y su Reglamento.
                     </p>
                     <p className="mt-3">
-                      Contacto: <a href="mailto:randradedev@gmail.com" className="text-primary hover:text-primary-light transition-colors">randradedev@gmail.com</a> | Tel: 55 25765962
+                      Contacto: <a href="mailto:randrade@expgrowai.mx" className="text-primary hover:text-primary-light transition-colors">randrade@expgrowai.mx</a> | Tel: 55 25765962
                     </p>
                   </section>
 
@@ -123,7 +123,7 @@ export default function Privacy() {
                     </ul>
                     <p className="mt-3">
                       Para ejercer sus derechos ARCO, envíe una solicitud por escrito a{' '}
-                      <a href="mailto:randradedev@gmail.com" className="text-primary hover:text-primary-light transition-colors">randradedev@gmail.com</a>{' '}
+                      <a href="mailto:randrade@expgrowai.mx" className="text-primary hover:text-primary-light transition-colors">randrade@expgrowai.mx</a>{' '}
                       indicando su nombre, los derechos que desea ejercer y una descripción clara de su solicitud. 
                       Le responderemos en un plazo máximo de 20 días hábiles.
                     </p>

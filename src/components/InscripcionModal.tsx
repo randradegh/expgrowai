@@ -77,7 +77,7 @@ export default function InscripcionModal({ isOpen, onClose }: InscripcionModalPr
           <p className="text-gray-400">
             Envía una imagen clara del depósito o transferencia a:
           </p>
-          <p className="text-primary font-bold break-all">randradedev@gmail.com</p>
+          <p className="text-primary font-bold break-all">randrade@expgrowai.mx</p>
           <p className="text-gray-400">
             poniendo en el título del mensaje su nombre y el texto <strong className="text-white">Pago del curso de GenAI en educación</strong>.
           </p>

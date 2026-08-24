@@ -35,7 +35,7 @@ const organizationSchema = {
     '@type': 'ContactPoint',
     telephone: '+52-55-2576-5962',
     contactType: 'sales',
-    email: 'randradedev@gmail.com',
+    email: 'randrade@expgrowai.mx',
     availableLanguage: ['Spanish', 'English'],
   },
   sameAs: [],

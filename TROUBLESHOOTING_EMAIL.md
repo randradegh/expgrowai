@@ -87,7 +87,7 @@ Los logs mostrarán errores como:
 1. Crea un archivo `.env.local` en la raíz del proyecto:
 ```env
 RESEND_API_KEY=re_tu_api_key_aqui
-CONTACT_EMAIL=randradedev@gmail.com
+CONTACT_EMAIL=randrade@expgrowai.mx
 RESEND_FROM_EMAIL=onboarding@resend.dev
 ```
 

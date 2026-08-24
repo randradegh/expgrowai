@@ -302,7 +302,7 @@ export default function About() {
                     </div>
                     <h3 className="text-gray-400 font-bold mb-3 text-sm uppercase tracking-wide text-center md:text-left">Correo Electrónico</h3>
                     <p className="text-white text-base md:text-lg font-bold text-center md:text-left break-words">
-                      randradedev@gmail.com
+                      randrade@expgrowai.mx
                     </p>
                   </div>
                 </div>

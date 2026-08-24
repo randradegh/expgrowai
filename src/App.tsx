@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
+import Masterclass from './pages/Masterclass'
 // import Curso from './pages/Curso'  // ocultado temporalmente
 import CursoProfesionistas from './pages/CursoProfesionistas'
 import Blog from './pages/Blog'
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/masterclass" element={<Masterclass />} />
           <Route path="/sobre-mi" element={<About />} />
           <Route path="/servicios" element={<Services />} />
           {/* Ruta /curso oculta temporalmente */}

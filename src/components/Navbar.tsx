@@ -36,6 +36,13 @@ export default function Navbar() {
             Servicios
           </Link>
           <Link
+            to="/masterclass"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary-dark transition-colors"
+          >
+            <span className="material-symbols-outlined text-base" aria-hidden>live_tv</span>
+            Master Class
+          </Link>
+          <Link
             to="/curso-profesionistas"
             className={`text-sm font-medium transition-colors ${
               isActive('/curso-profesionistas') ? 'text-white' : 'text-gray-300 hover:text-white'

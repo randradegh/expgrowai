@@ -36,7 +36,7 @@ export default async function handler(req: any, res: any) {
     }
 
     // Obtener la dirección de correo de destino desde variables de entorno
-    const toEmail = process.env.CONTACT_EMAIL || 'randradedev@gmail.com'
+    const toEmail = process.env.CONTACT_EMAIL || 'randrade@expgrowai.mx'
     const resendApiKey = process.env.RESEND_API_KEY
     
     console.log('📧 Configuración de email:', {

@@ -91,7 +91,7 @@ expgrowai/
 
 ## 📬 Formulario de Contacto
 
-El modal de contacto envía un POST a `/api/contact` (serverless function en Vercel) que utiliza **Resend** para entregar el mensaje a `randradedev@gmail.com`.
+El modal de contacto envía un POST a `/api/contact` (serverless function en Vercel) que utiliza **Resend** para entregar el mensaje a `randrade@expgrowai.mx`.
 
 - From: `Exponential Grow AI <contacto@expgrowai.mx>`
 - Reply-To: email del visitante
@@ -102,7 +102,7 @@ Variables de entorno requeridas en Vercel:
 | Variable | Descripción |
 |----------|-------------|
 | `RESEND_API_KEY` | API key de Resend |
-| `CONTACT_EMAIL` | Destinatario (por defecto randradedev@gmail.com) |
+| `CONTACT_EMAIL` | Destinatario (por defecto randrade@expgrowai.mx) |
 | `RESEND_FROM_EMAIL` | Remitente (por defecto contacto@expgrowai.mx) |
 
 ## 🎨 Personalización

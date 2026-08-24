@@ -47,14 +47,14 @@ npm install resend
 2. Settings → Environment Variables
 3. Agrega las siguientes variables:
    - `RESEND_API_KEY`: Tu API key de Resend (ej: `re_abc123...`)
-   - `CONTACT_EMAIL`: `randradedev@gmail.com` (opcional, este es el valor por defecto)
+   - `CONTACT_EMAIL`: `randrade@expgrowai.mx` (opcional, este es el valor por defecto)
    - `RESEND_FROM_EMAIL`: `onboarding@resend.dev` (opcional, para pruebas. Luego usa tu dominio verificado como `noreply@tudominio.com`)
 
 #### En desarrollo local (opcional):
 Crea un archivo `.env.local` en la raíz del proyecto:
 ```env
 RESEND_API_KEY=re_tu_api_key_aqui
-CONTACT_EMAIL=randradedev@gmail.com
+CONTACT_EMAIL=randrade@expgrowai.mx
 RESEND_FROM_EMAIL=onboarding@resend.dev
 ```
 
@@ -93,7 +93,7 @@ npm install @sendgrid/mail
 
 ### Paso 3: Variables de entorno
 - `SENDGRID_API_KEY`: Tu API key
-- `CONTACT_EMAIL`: randradedev@gmail.com
+- `CONTACT_EMAIL`: randrade@expgrowai.mx
 
 ### Paso 4: Código de ejemplo en `api/contact.ts`:
 ```typescript
@@ -102,7 +102,7 @@ import sgMail from '@sendgrid/mail'
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!)
 
 const msg = {
-  to: process.env.CONTACT_EMAIL || 'randradedev@gmail.com',
+  to: process.env.CONTACT_EMAIL || 'randrade@expgrowai.mx',
   from: 'noreply@tudominio.com', // Debe ser un email verificado
   subject: `Nuevo mensaje de contacto de ${name}`,
   html: `
