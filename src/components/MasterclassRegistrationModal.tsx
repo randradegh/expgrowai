@@ -5,7 +5,8 @@ interface MasterclassRegistrationModalProps {
   onClose: () => void
 }
 
-const WHATSAPP_NUMBER = '5215525765962'
+// Número del bot (nuevo, emparejado a la sesión WhatsApp) — no el número personal.
+const WHATSAPP_NUMBER = '5215648096912'
 const FALLBACK_EMAIL = 'randrade@expgrowai.mx'
 
 const GIROS = [
