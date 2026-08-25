@@ -5,8 +5,6 @@ interface MasterclassRegistrationModalProps {
   onClose: () => void
 }
 
-// Número del bot (nuevo, emparejado a la sesión WhatsApp) — no el número personal.
-const WHATSAPP_NUMBER = '5215648096912'
 const FALLBACK_EMAIL = 'randrade@expgrowai.mx'
 
 const GIROS = [
@@ -17,7 +15,7 @@ const GIROS = [
   'Otro',
 ]
 
-type Step = 'form' | 'whatsapp' | 'email_sent' | 'email_error'
+type Step = 'form' | 'email_sent' | 'email_error'
 
 export default function MasterclassRegistrationModal({ isOpen, onClose }: MasterclassRegistrationModalProps) {
   const [step, setStep] = useState<Step>('form')
@@ -41,45 +39,21 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
     onClose()
   }
 
-  const buildMessage = () =>
-    [
+  const handleEmail = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSending(true)
+    setErrorMessage('')
+    const lines = [
       'Hola Roberto, quiero reservar mi lugar en la master class gratuita "Automatiza tu PYME con Agentes de IA".',
       '',
       `Nombre: ${formData.name}`,
       `Email: ${formData.email}`,
       `Giro: ${formData.giro}`,
       `Ciudad: ${formData.ciudad}`,
-    ].join('\n')
-
-  const hasWhatsApp = formData.whatsapp.trim().length > 0
-
-  const handleWhatsApp = () => {
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage())}`
-    window.open(url, '_blank', 'noopener,noreferrer')
-    // El registro por WhatsApp también deja copia por email (misma ruta que el
-    // botón de email): el endpoint /api/contact entrega a randrade@expgrowai.mx.
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        message: [
-          buildMessage(),
-          '',
-          '(Registrado desde la página de la master class — vía WhatsApp)',
-        ].join('\n'),
-      }),
-    }).catch(() => {
-      // No bloquear el flujo: si el email falla, el usuario sigue por WhatsApp.
-    })
-    setStep('whatsapp')
-  }
-
-  const handleEmail = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSending(true)
-    setErrorMessage('')
+    ]
+    if (formData.whatsapp.trim()) {
+      lines.splice(4, 0, `WhatsApp: ${formData.whatsapp}`)
+    }
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -88,7 +62,7 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
           name: formData.name,
           email: formData.email,
           message: [
-            buildMessage(),
+            lines.join('\n'),
             '',
             '(Registrado desde la página de la master class)',
           ].join('\n'),
@@ -130,7 +104,6 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
         <div className="flex items-center justify-between p-6 border-b border-white/10 flex-shrink-0">
           <h2 className="text-2xl font-black text-white">
             {step === 'form' && 'Reserva tu lugar'}
-            {step === 'whatsapp' && 'Último paso'}
             {step === 'email_sent' && '¡Lugar reservado!'}
             {step === 'email_error' && 'Hubo un problema'}
           </h2>
@@ -147,8 +120,8 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
           {step === 'form' && (
             <>
               <p className="text-gray-400 text-sm">
-                Cupo limitado a 30 personas. Regístrate y te confirmo por WhatsApp o email con el
-                link de Google Meet.
+                Cupo limitado a 30 personas. Regístrate y te confirmo por email (o por WhatsApp si
+                nos lo dejas) con el link de Google Meet.
               </p>
               <form onSubmit={handleEmail} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -186,7 +159,7 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="mc-whatsapp" className="block text-sm font-bold text-white mb-2">
-                      WhatsApp <span className="font-normal text-gray-500">(recomendado)</span>
+                      WhatsApp <span className="font-normal text-gray-500">(opcional, para confirmación)</span>
                     </label>
                     <input
                       type="tel"
@@ -232,15 +205,7 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
                   </select>
                 </div>
 
-                <div className="pt-2 flex flex-col gap-3">
-                  <button
-                    type="button"
-                    onClick={handleWhatsApp}
-                    disabled={!hasWhatsApp}
-                    className="w-full px-6 py-3 rounded-full bg-[#25D366] text-white font-bold transition-all hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
-                  >
-                    Reservar por WhatsApp
-                  </button>
+                <div className="pt-2">
                   <button
                     type="submit"
                     disabled={isSending}
@@ -252,43 +217,12 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
                         Enviando...
                       </span>
                     ) : (
-                      'Reservar por email'
+                      'Reservar mi lugar'
                     )}
                   </button>
-                  {!hasWhatsApp && (
-                    <p className="text-xs text-gray-500 text-center">
-                      Sin WhatsApp es igual de fácil: usa el botón de email y te confirmo por ahí.
-                    </p>
-                  )}
                 </div>
               </form>
             </>
-          )}
-
-          {step === 'whatsapp' && (
-            <div className="text-center py-6 space-y-4">
-              <div className="w-16 h-16 bg-[#25D366]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="material-symbols-outlined text-[#25D366] text-4xl">campaign</span>
-              </div>
-              <h3 className="text-xl font-bold text-white">Abre el chat y envía el mensaje</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Se abrió WhatsApp con tu registro ya escrito. Solo presiona enviar. Ahí te confirmo
-                tu lugar con el link de Google Meet y el horario exacto.
-              </p>
-              <button
-                onClick={handleWhatsApp}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white font-bold hover:opacity-90 transition-all"
-              >
-                <span className="material-symbols-outlined">open_in_new</span>
-                Reabrir WhatsApp
-              </button>
-              <p className="text-xs text-gray-500">
-                ¿WhatsApp no abrió? Escríbeme directamente a{' '}
-                <a href={`mailto:${FALLBACK_EMAIL}`} className="text-primary font-bold">
-                  {FALLBACK_EMAIL}
-                </a>
-              </p>
-            </div>
           )}
 
           {step === 'email_sent' && (
@@ -311,6 +245,12 @@ export default function MasterclassRegistrationModal({ isOpen, onClose }: Master
               </div>
               <h3 className="text-xl font-bold text-white">No pudo enviarse tu registro</h3>
               <p className="text-red-400 text-sm">{errorMessage}</p>
+              <p className="text-xs text-gray-500">
+                Si persiste, escríbeme directamente a{' '}
+                <a href={`mailto:${FALLBACK_EMAIL}`} className="text-primary font-bold">
+                  {FALLBACK_EMAIL}
+                </a>
+              </p>
             </div>
           )}
         </div>
