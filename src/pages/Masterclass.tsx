@@ -4,8 +4,8 @@ import Footer from '../components/Footer'
 import SEO from '../components/SEO'
 import MasterclassRegistrationModal from '../components/MasterclassRegistrationModal'
 
-// Fecha y hora confirmadas de la master class (miércoles 2-sep-2026, 19:00 CDMX).
-const MASTERCLASS_FECHA = 'Miércoles 2 de septiembre de 2026'
+// Fecha y hora confirmadas de la master class (miércoles 23-sep-2026, 19:00 CDMX).
+const MASTERCLASS_FECHA = 'Miércoles 23 de septiembre de 2026'
 const MASTERCLASS_HORA = '19:00 h (hora CDMX)'
 const CUPO = 30
 
