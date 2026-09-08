@@ -102,14 +102,14 @@ export default function Masterclass() {
           </div>
 
           {/* Aviso de nueva fecha — estrella */}
-          <div className="relative mx-auto mb-6 w-[160px] h-[160px] flex items-center justify-center">
+          <div className="relative mx-auto mb-6 w-[200px] h-[200px] flex items-center justify-center">
             <div
-              className="absolute inset-0 bg-amber-400 shadow-[0_0_30px_rgba(251,191,36,0.6)]"
+              className="absolute inset-0 bg-red-600 shadow-[0_0_40px_rgba(220,38,38,0.7)]"
               style={{ clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }}
             />
             <div className="relative z-10 text-center leading-tight">
-              <span className="block text-2xl font-black text-slate-900">¡NUEVA</span>
-              <span className="block text-2xl font-black text-slate-900">FECHA!</span>
+              <span className="block text-3xl font-black text-orange-400">¡NUEVA</span>
+              <span className="block text-3xl font-black text-orange-400">FECHA!</span>
             </div>
           </div>
 
