@@ -100,6 +100,19 @@ export default function Masterclass() {
               Master Class Gratuita · En vivo · Cupo limitado a {CUPO} personas
             </span>
           </div>
+
+          {/* Aviso de nueva fecha — estrella */}
+          <div className="relative mx-auto mb-6 w-[160px] h-[160px] flex items-center justify-center">
+            <div
+              className="absolute inset-0 bg-amber-400 shadow-[0_0_30px_rgba(251,191,36,0.6)]"
+              style={{ clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }}
+            />
+            <div className="relative z-10 text-center leading-tight">
+              <span className="block text-2xl font-black text-slate-900">¡NUEVA</span>
+              <span className="block text-2xl font-black text-slate-900">FECHA!</span>
+            </div>
+          </div>
+
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-white mb-6">
             Pasa de la libreta de papel a un{' '}
             <span className="text-primary">asistente digital que trabaja 24/7</span>
