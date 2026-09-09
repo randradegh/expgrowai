@@ -102,14 +102,17 @@ export default function Masterclass() {
           </div>
 
           {/* Aviso de nueva fecha — estrella */}
-          <div className="relative mx-auto mb-6 w-[200px] h-[200px] flex items-center justify-center">
-            <div
-              className="absolute inset-0 bg-red-600 shadow-[0_0_40px_rgba(220,38,38,0.7)]"
-              style={{ clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }}
+          <div className="relative mx-auto mb-6 w-[240px] h-[240px]">
+            <img
+              src="/estrella_fondo_transparente.png"
+              alt="¡Nueva Fecha!"
+              className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,165,0,0.7)]"
             />
-            <div className="relative z-10 text-center leading-tight">
-              <span className="block text-3xl font-black text-orange-400">¡NUEVA</span>
-              <span className="block text-3xl font-black text-orange-400">FECHA!</span>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center leading-tight">
+                <span className="block text-2xl font-black text-orange-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">¡NUEVA</span>
+                <span className="block text-2xl font-black text-orange-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">FECHA!</span>
+              </div>
             </div>
           </div>
 
