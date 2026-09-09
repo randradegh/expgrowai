@@ -108,12 +108,6 @@ export default function Masterclass() {
               alt="¡Nueva Fecha!"
               className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,165,0,0.7)]"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center leading-tight">
-                <span className="block text-2xl font-black text-orange-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">¡NUEVA</span>
-                <span className="block text-2xl font-black text-orange-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">FECHA!</span>
-              </div>
-            </div>
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-white mb-6">
