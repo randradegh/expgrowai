@@ -103,7 +103,7 @@ export default async function handler(req: any, res: any) {
         from: fromEmailWithName,
         to: [toEmail],
         replyTo: email,
-        subject: `${subjectPrefix} de ${safeName}`,
+        subject: isDiagnostico ? 'Diagnóstico de Automatización Agéntica' : `${subjectPrefix} de ${safeName}`,
         headers: {
           'X-Entity-Ref-ID': `contact-${Date.now()}`,
         },
