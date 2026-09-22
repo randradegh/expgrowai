@@ -41,7 +41,7 @@ export default async function handler(req: any, res: any) {
                          message.toLowerCase().includes('curso') ||
                          message.toLowerCase().includes('automatización')
     
-    const subjectPrefix = isDiagnostico ? 'Solicitud de inscripción — Diagnóstico' : 'Nuevo mensaje de contacto'
+    const subjectPrefix = isDiagnostico ? 'Mensaje de Diagnóstico de Automatización Agéntica' : 'Nuevo mensaje de contacto'
 
     // Obtener la dirección de correo de destino desde variables de entorno
     const toEmail = process.env.CONTACT_EMAIL || 'randrade@expgrowai.mx'
