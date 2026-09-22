@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import SEO from '../components/SEO'
-import ContactModal from '../components/ContactModal'
+import DiagnosticoContactModal from '../components/DiagnosticoContactModal'
 
 // Fechas del diagnóstico
 const FECHAS = '28 de septiembre – 1 de octubre de 2026'
@@ -470,7 +470,7 @@ export default function DiagnosticoAutomatizacion() {
 
       <Footer />
 
-      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <DiagnosticoContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </div>
   )
 }
