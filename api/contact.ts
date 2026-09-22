@@ -18,7 +18,7 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const { name, email, message } = req.body
+    const { name, email, phone, message } = req.body
 
     // Validar campos requeridos
     if (!name || !email || !message) {
@@ -34,6 +34,14 @@ export default async function handler(req: any, res: any) {
         error: 'Email inválido' 
       })
     }
+
+    // Determinar el contexto del mensaje (diagnóstico vs contacto general)
+    const isDiagnostico = message.toLowerCase().includes('diagnóstico') || 
+                         message.toLowerCase().includes('inscripción') ||
+                         message.toLowerCase().includes('curso') ||
+                         message.toLowerCase().includes('automatización')
+    
+    const subjectPrefix = isDiagnostico ? 'Solicitud de inscripción — Diagnóstico' : 'Nuevo mensaje de contacto'
 
     // Obtener la dirección de correo de destino desde variables de entorno
     const toEmail = process.env.CONTACT_EMAIL || 'randrade@expgrowai.mx'
@@ -94,9 +102,8 @@ export default async function handler(req: any, res: any) {
       const { data, error } = await resend.emails.send({
         from: fromEmailWithName,
         to: [toEmail],
-        replyTo: email, // Para que puedas responder directamente al usuario
-        subject: `Nuevo mensaje de contacto de ${safeName}`,
-        // Agregar headers para mejor deliverability
+        replyTo: email,
+        subject: `${subjectPrefix} de ${safeName}`,
         headers: {
           'X-Entity-Ref-ID': `contact-${Date.now()}`,
         },
@@ -111,7 +118,7 @@ export default async function handler(req: any, res: any) {
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 20px;">
     <div style="text-align: center; margin-bottom: 30px;">
       <h1 style="color: #111827; font-size: 24px; font-weight: 700; margin: 0 0 10px 0;">
-        Nuevo mensaje de contacto
+        ${isDiagnostico ? 'Solicitud de inscripción — Diagnóstico de Automatización' : 'Nuevo mensaje de contacto'}
       </h1>
       <p style="color: #6b7280; font-size: 14px; margin: 0;">
         Has recibido un nuevo mensaje desde tu sitio web
@@ -127,7 +134,7 @@ export default async function handler(req: any, res: any) {
           ${safeName}
         </p>
       </div>
-      <div>
+      <div style="margin-bottom: 15px;">
         <p style="margin: 0; color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
           Email
         </p>
@@ -137,6 +144,16 @@ export default async function handler(req: any, res: any) {
           </a>
         </p>
       </div>
+      ${phone ? `
+      <div>
+        <p style="margin: 0; color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+          Teléfono
+        </p>
+        <p style="margin: 5px 0 0 0; color: #111827; font-size: 16px; font-weight: 500;">
+          ${escapeHtml(phone)}
+        </p>
+      </div>
+      ` : ''}
     </div>
     
     <div style="margin-bottom: 30px;">
@@ -161,7 +178,7 @@ export default async function handler(req: any, res: any) {
 </html>
         `.trim(),
         text: `
-NUEVO MENSAJE DE CONTACTO
+${isDiagnostico ? 'SOLICITUD DE INSCRIPCIÓN — DIAGNÓSTICO DE AUTOMATIZACIÓN' : 'NUEVO MENSAJE DE CONTACTO'}
 
 Has recibido un nuevo mensaje desde tu sitio web.
 
@@ -172,7 +189,7 @@ ${name}
 
 EMAIL:
 ${email}
-
+${phone ? `\nTELÉFONO:\n${phone}\n` : ''}
 MENSAJE:
 ${message}
 
