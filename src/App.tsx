@@ -8,6 +8,7 @@ import Masterclass from './pages/Masterclass'
 import CursoProfesionistas from './pages/CursoProfesionistas'
 import Blog from './pages/Blog'
 import Privacy from './pages/Privacy'
+import DiagnosticoAutomatizacion from './pages/DiagnosticoAutomatizacion'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/masterclass" element={<Masterclass />} />
+          <Route path="/diagnostico-automatizacion" element={<DiagnosticoAutomatizacion />} />
           <Route path="/sobre-mi" element={<About />} />
           <Route path="/servicios" element={<Services />} />
           {/* Ruta /curso oculta temporalmente */}
