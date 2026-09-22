@@ -118,7 +118,7 @@ export default async function handler(req: any, res: any) {
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 20px;">
     <div style="text-align: center; margin-bottom: 30px;">
       <h1 style="color: #111827; font-size: 24px; font-weight: 700; margin: 0 0 10px 0;">
-        ${isDiagnostico ? 'Solicitud de inscripción — Diagnóstico de Automatización' : 'Nuevo mensaje de contacto'}
+        ${isDiagnostico ? 'Diagnóstico de Automatización Agéntica' : 'Nuevo mensaje de contacto'}
       </h1>
       <p style="color: #6b7280; font-size: 14px; margin: 0;">
         Has recibido un nuevo mensaje desde tu sitio web
