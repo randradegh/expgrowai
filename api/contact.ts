@@ -18,7 +18,7 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const { name, email, phone, message } = req.body
+    const { name, email, phone, message, type } = req.body
 
     // Validar campos requeridos
     if (!name || !email || !message) {
@@ -35,11 +35,8 @@ export default async function handler(req: any, res: any) {
       })
     }
 
-    // Determinar el contexto del mensaje (diagnóstico vs contacto general)
-    const isDiagnostico = message.toLowerCase().includes('diagnóstico') || 
-                         message.toLowerCase().includes('inscripción') ||
-                         message.toLowerCase().includes('curso') ||
-                         message.toLowerCase().includes('automatización')
+    // Determinar el contexto del mensaje a partir del campo type
+    const isDiagnostico = type === 'diagnostico'
     
     const subjectPrefix = isDiagnostico ? 'Mensaje de Diagnóstico de Automatización Agéntica' : 'Nuevo mensaje de contacto'
 
