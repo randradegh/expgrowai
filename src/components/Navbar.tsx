@@ -35,6 +35,7 @@ export default function Navbar() {
           >
             Servicios
           </Link>
+          {/* Diagnóstico de Automatización oculto hasta confirmar nueva fecha.
           <Link
             to="/diagnostico-automatizacion"
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary-dark transition-colors"
@@ -42,6 +43,7 @@ export default function Navbar() {
             <span className="material-symbols-outlined text-base" aria-hidden>smart_toy</span>
             Automatización Agéntica
           </Link>
+          */}
           <Link
             to="/sobre-mi"
             className={`text-sm font-medium transition-colors ${
