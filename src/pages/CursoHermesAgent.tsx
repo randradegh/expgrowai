@@ -276,7 +276,7 @@ export default function CursoHermesAgent() {
         </section>
       </main>
 
-      <Footer />
+      <Footer showContactCta={false} />
       <HermesCourseContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </div>
   )

@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ContactModal from './ContactModal'
 
-export default function Footer() {
+export default function Footer({ showContactCta = true }: { showContactCta?: boolean }) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   return (
     <>
       <footer className="relative py-32 bg-background-dark overflow-hidden">
+      {showContactCta && <>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50"></div>
       <div className="max-w-[720px] mx-auto px-6 text-center relative z-10">
         <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
@@ -26,6 +27,7 @@ export default function Footer() {
           </button>
         </div>
       </div>
+      </>}
       
       {/* Contact Information */}
       <div className="mt-16 mb-24 relative z-10">
@@ -66,10 +68,10 @@ export default function Footer() {
       </div>
     </footer>
     
-    <ContactModal 
+    {showContactCta && <ContactModal
       isOpen={isContactModalOpen} 
       onClose={() => setIsContactModalOpen(false)} 
-    />
+    />}
     </>
   )
 }
