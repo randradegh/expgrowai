@@ -6,7 +6,7 @@ interface HermesCourseContactModalProps {
 }
 
 export default function HermesCourseContactModal({ isOpen, onClose }: HermesCourseContactModalProps) {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', question: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', companyProfession: '', aiExperience: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
@@ -28,8 +28,12 @@ export default function HermesCourseContactModal({ isOpen, onClose }: HermesCour
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
-          message: `Solicitud de información — Curso Hermes Agent para Principiantes\n\n${formData.question}`,
+          message: [
+            'Solicitud de información — Curso Hermes Agent para Principiantes',
+            '',
+            `Tipo de empresa o profesión: ${formData.companyProfession}`,
+            `Experiencia en el uso de IA Generativa: ${formData.aiExperience}`,
+          ].join('\n'),
         }),
       })
       const contentType = response.headers.get('content-type')
@@ -39,7 +43,7 @@ export default function HermesCourseContactModal({ isOpen, onClose }: HermesCour
       if (!response.ok) throw new Error(data.message || data.error || 'No se pudo enviar el mensaje.')
 
       setSubmitStatus('success')
-      setFormData({ name: '', email: '', phone: '', question: '' })
+      setFormData({ name: '', email: '', companyProfession: '', aiExperience: '' })
     } catch (error) {
       setSubmitStatus('error')
       setErrorMessage(error instanceof Error ? error.message : 'Error al enviar el mensaje. Inténtalo de nuevo.')
@@ -72,7 +76,7 @@ export default function HermesCourseContactModal({ isOpen, onClose }: HermesCour
             </div>
           ) : (
             <>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">Déjanos tus datos y dinos qué quieres saber sobre fechas, inversión o preparación.</p>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">Déjanos tus datos para recibir información sobre el curso.</p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="hermes-course-name" className="block text-sm font-bold text-white mb-2">Nombre *</label>
@@ -83,12 +87,12 @@ export default function HermesCourseContactModal({ isOpen, onClose }: HermesCour
                   <input id="hermes-course-email" type="email" name="email" value={formData.email} onChange={handleChange} required autoComplete="email" className="w-full px-4 py-3 rounded-xl bg-background-dark border border-white/10 text-white placeholder:text-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="tu@email.com" />
                 </div>
                 <div>
-                  <label htmlFor="hermes-course-phone" className="block text-sm font-bold text-white mb-2">Teléfono (opcional)</label>
-                  <input id="hermes-course-phone" type="tel" name="phone" value={formData.phone} onChange={handleChange} autoComplete="tel" className="w-full px-4 py-3 rounded-xl bg-background-dark border border-white/10 text-white placeholder:text-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="55 1234 5678" />
+                  <label htmlFor="hermes-course-company-profession" className="block text-sm font-bold text-white mb-2">Tipo de empresa o profesión *</label>
+                  <input id="hermes-course-company-profession" name="companyProfession" value={formData.companyProfession} onChange={handleChange} required autoComplete="organization-title" className="w-full px-4 py-3 rounded-xl bg-background-dark border border-white/10 text-white placeholder:text-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="Empresa, sector o profesión" />
                 </div>
                 <div>
-                  <label htmlFor="hermes-course-question" className="block text-sm font-bold text-white mb-2">¿Qué te gustaría saber? *</label>
-                  <textarea id="hermes-course-question" name="question" value={formData.question} onChange={handleChange} required rows={3} className="w-full px-4 py-3 rounded-xl bg-background-dark border border-white/10 text-white placeholder:text-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none" placeholder="Fechas, inversión, requisitos…" />
+                  <label htmlFor="hermes-course-ai-experience" className="block text-sm font-bold text-white mb-2">Experiencia en el uso de IA Generativa *</label>
+                  <textarea id="hermes-course-ai-experience" name="aiExperience" value={formData.aiExperience} onChange={handleChange} required rows={3} className="w-full px-4 py-3 rounded-xl bg-background-dark border border-white/10 text-white placeholder:text-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none" placeholder="Cuéntanos brevemente qué herramientas has usado y para qué…" />
                 </div>
                 {submitStatus === 'error' && <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl"><p className="text-red-400 text-sm">{errorMessage}</p></div>}
                 <div className="flex gap-3 pt-2">
