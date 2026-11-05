@@ -8,6 +8,7 @@ import Services from './pages/Services'
 // import CursoProfesionistas from './pages/CursoProfesionistas'  // oculta hasta renovar fechas y oferta
 import Blog from './pages/Blog'
 import Privacy from './pages/Privacy'
+import CursoHermesAgent from './pages/CursoHermesAgent'
 // import DiagnosticoAutomatizacion from './pages/DiagnosticoAutomatizacion'  // oculta hasta nueva fecha
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/diagnostico-automatizacion" element={<Navigate to="/" replace />} /> {/* oculta hasta nueva fecha */}
           <Route path="/sobre-mi" element={<About />} />
           <Route path="/servicios" element={<Services />} />
+          <Route path="/curso-hermes-agent" element={<CursoHermesAgent />} />
           {/* Ruta /curso oculta temporalmente */}
           <Route path="/curso-profesionistas" element={<Navigate to="/" replace />} /> {/* oculta hasta renovar fechas y oferta */}
           <Route path="/recursos" element={<Blog />} />

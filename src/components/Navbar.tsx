@@ -35,6 +35,14 @@ export default function Navbar() {
           >
             Servicios
           </Link>
+          <Link
+            to="/curso-hermes-agent"
+            className={`text-sm font-medium transition-colors ${
+              isActive('/curso-hermes-agent') ? 'text-white' : 'text-gray-300 hover:text-white'
+            }`}
+          >
+            Curso Hermes
+          </Link>
           {/* Diagnóstico de Automatización oculto hasta confirmar nueva fecha.
           <Link
             to="/diagnostico-automatizacion"

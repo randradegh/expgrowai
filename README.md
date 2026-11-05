@@ -14,6 +14,7 @@ Desplegado en **Vercel** con dominio `expgrowai.mx`.
 - **Diseño responsive** y optimizado para móviles
 - **Modo oscuro** con paleta indigo / slate oscuro
 - **Formulario de contacto** vía API serverless + Resend (dominio `expgrowai.mx` verificado)
+- **Página del curso Hermes Agent para Principiantes** con programa de 4 sesiones e información de la próxima edición
 
 ## 📋 Requisitos Previos
 
@@ -47,6 +48,8 @@ expgrowai/
 │   └── hashnode.ts          # Proxy para blog Hashnode
 ├── public/
 │   ├── images/
+│   ├── hermes/
+│   │   └── hermes-agent-marketing_v1_mensajera.png
 │   ├── _redirects           # Fallback SPA routing
 │   └── robots.txt
 ├── src/
@@ -54,11 +57,13 @@ expgrowai/
 │   │   ├── Navbar.tsx
 │   │   ├── Footer.tsx
 │   │   ├── ContactModal.tsx
+│   │   ├── HermesCourseContactModal.tsx
 │   │   └── InscripcionModal.tsx
 │   ├── pages/
 │   │   ├── Home.tsx         # Landing page
 │   │   ├── About.tsx
 │   │   ├── Services.tsx     # 4 servicios
+│   │   ├── CursoHermesAgent.tsx # Curso Hermes Agent
 │   │   ├── Curso.tsx        # Código intacto, ruta oculta
 │   │   └── Blog.tsx
 │   ├── lib/
@@ -80,7 +85,14 @@ expgrowai/
 | `/servicios` | Services | 4 servicios detallados: Marketing → Prompt Engineering → Educación → Auditoría SEO con Agentes de IA. Cada uno con mini casos de éxito |
 | `/sobre-mi` | About | Biografía y trayectoria profesional |
 | `/recursos` | Blog | Artículos y recursos sobre IA Generativa |
+| `/curso-hermes-agent` | Curso Hermes Agent | Curso práctico en vivo para principiantes; 4 sesiones, programa, requisitos e información de la edición vigente |
 | ~~`/curso`~~ | Curso | Ruta oculta temporalmente (código intacto) |
+
+## Curso Hermes Agent para Principiantes
+
+La página `/curso-hermes-agent` presenta el programa de cuatro sesiones, requisitos, resultados de aprendizaje y un formulario de contacto específico. La ilustración de la hero está en `public/hermes/hermes-agent-marketing_v1_mensajera.png`.
+
+**Próxima edición:** 30 de noviembre al 3 de diciembre de 2026, de 19:00 a 21:00 h, vía Google Meet. Son cuatro sesiones de dos horas (8 horas en total).
 
 ## 🧩 Servicios
 
