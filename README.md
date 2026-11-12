@@ -37,6 +37,16 @@ npm run dev
 
 3. Abre tu navegador en `http://localhost:5173`
 
+### Acceso desde otro equipo de la red local
+
+Para permitir conexiones desde otros dispositivos conectados a la misma red, inicia Vite escuchando en todas las interfaces:
+
+```bash
+npm run dev -- --host 0.0.0.0
+```
+
+Desde el otro equipo, abre `http://<IP-LAN-del-equipo>:5173` (usa la dirección IP local del equipo donde corre Vite). Limita este acceso a una red de confianza; no expongas el servidor de desarrollo a Internet.
+
 > Nota: las rutas `/api/*` son funciones serverless de Vercel y no funcionan localmente con `npm run dev`.
 
 ## 📁 Estructura del Proyecto
